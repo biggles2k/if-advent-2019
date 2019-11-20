@@ -1,0 +1,21 @@
+# OS generated files #
+######################
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# All Inform files except story file #
+######################################
+/Advent-2019.inform/*
+/Advent-2019.materials/*
+!/Advent-2019.inform/Source/
+/Advent-2019.inform/Source/*
+!/Advent-2019.inform/Source/story.ni
+
+
+
+

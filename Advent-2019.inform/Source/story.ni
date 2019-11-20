@@ -1,0 +1,127 @@
+"Advent-2019" by "Michael D. Hilborn"
+
+[
+ Started: Mon, Nov 11, 2019
+]
+
+Part 1 - For Release
+
+Chapter 1 - Includes
+
+Chapter 2 - Meta Information
+
+The story headline is an "An Interactive Advent Calendar". The story genre is "Fantasy". The story description is "My entry for the 2019 Advent Calendar." The story creation year is 2019.
+
+Part 2 - Things and Actions
+
+Chapter 1 - New Values and Definitions
+
+An element is a kind of value. The elements are earth, air, fire, water, magma, ooze, smoke, ice, and element-less.
+
+Definition: A direction is compass if it is north or it is south or it is east or it is west or it is northeast or it is northwest or it is southeast or it is southwest.
+
+Chapter 2 - New Things
+
+An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as a element-less elemental container.
+
+Definition: An elemental container is imbued if it is not element-less.
+
+Before printing the name of a element-less elemental container:
+	say "empty ";
+
+After printing the name of an imbued elemental container:
+	say " of [element]".
+
+Before printing the plural name of a element-less elemental container:
+	say "empty ";
+	
+Rule for printing the plural name of an imbued elemental container when listing contents:
+	say "[element]";
+
+To say print (stuff - an element):
+	say "a lot of [stuff]";
+
+Table of Elemental Descriptions
+Element	Display
+earth	"a lot of dirt"
+
+An orb is a kind of elemental container. The description of an orb is "A clear sphere, like a crystal ball[if not element-less]. Within the sphere you see [print element][end if]." Understand "elemental orb of" or "orb of" as an orb.
+	
+Before listing contents:
+	group orbs together as "orbs";
+	
+A canister is a kind of elemental container. The description of a canister is "A pneumatic tube[if not element-less]. It contains [paragraph break][print element][end if]." Understand "canister of" as a canister.
+
+A symbolic control is a kind of thing. A symbolic control has an element. The element of a symbolic control is usually element-less. A symbolic control can be lit.
+
+Part 3 - The World Model
+
+Chapter 1 - The Foyer
+
+The Foyer is a room. "This vaulted entranceway leads north into a domed chamber. A pair of study oak doors are to the south."
+
+The domed chamber from afar is scenery in the foyer. "It's a large chamber, that you can tell. It seems to have a pedestal in its center." Understand "pedestal" as the domed chamber from afar.
+
+The sturdy oak doors are doors. The sturdy oak doors are south of the Foyer. The sturdy oak doors are scenery.
+
+Chapter 2 - The Dome
+
+The Dome is north of the Foyer. "A domed chambers. A foyer lies south, and three hallways lead off in the northern directions. You can also go down."
+
+Chapter 3 - The Laboratory
+
+The Lab is northwest of the Dome. "Some kind of laboratory with an exit to the southeast."
+
+Chapter 4 - The Wardrobe
+
+The Wardrobe is north of the Dome. "A wardrobe with lots of clothes. An exit lies south."
+
+Chapter 5 - The Ritual Chamber
+
+The Ritual Chamber is northeast of the Dome. "Some kind of ritual chamber. Exit to the southwest."
+
+Chapter 6 - The Engine Room
+
+The Mechanical Room is down from the Dome. "The engine room. Only way out is up."
+
+Chapter 7 - The Elemental and Paraelemental Planes of Existence
+
+Part 4 - The Plot
+
+Part 5 - Help
+
+Part 6 - Testing - Not for release
+
+Chapter 1 - Notes for Beta Testers
+
+[Allows beta testers to write notes in game.]
+After reading a command (this is the ignore beta-comments rule):
+	if the player's command matches the regular expression "^\*":
+		say "(Noted.)"; 
+		reject the player's command.
+		
+Chapter 2 - Debugging
+
+[ Gotta debug! ]
+Debugging is a truth state that varies. Debugging is false.
+
+When play begins:
+	now debugging is true;
+	
+To debug (msg - some text):
+	if debugging is true:
+		say "[msg][line break]";
+		
+Imbuing it with is an action applying to one visible thing and an element.
+
+Understand "imbue [something] with [an element]" as imbuing it with.
+
+Carry out imbuing something with an element (called the stuff) (this is the cannot imbue a non-elemental container rule):
+	if the noun is not an elemental container:
+		say "You can't imbue that with [the stuff].";
+		rule fails;
+		
+Carry out imbuing something with an element (called the stuff) (this is the imbue elemental container with element rule):
+	say "[The noun] glows as it is infused with [stuff].";
+	now the element of the noun is the stuff;
+	
