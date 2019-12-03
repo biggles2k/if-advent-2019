@@ -22,7 +22,7 @@ Definition: A direction is compass if it is north or it is south or it is east o
 
 Chapter 2 - New Things
 
-An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as a element-less elemental container.
+An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as an element-less elemental container.
 
 Definition: An elemental container is imbued if it is not element-less.
 
@@ -45,7 +45,7 @@ Table of Elemental Descriptions
 Element	Display
 earth	"a lot of dirt"
 
-An orb is a kind of elemental container. The description of an orb is "A clear sphere, like a crystal ball[if not element-less]. Within the sphere you see [print element][end if]." Understand "elemental orb of" or "orb of" as an orb.
+An orb is a kind of elemental container. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." Understand "elemental orb of" or "orb of" as an orb.
 	
 Before listing contents:
 	group orbs together as "orbs";
@@ -56,35 +56,51 @@ A symbolic control is a kind of thing. A symbolic control has an element. The el
 
 Part 3 - The World Model
 
-Chapter 1 - The Foyer
+Chapter 1 - Background
 
-The Foyer is a room. "This vaulted entranceway leads north into a domed chamber. A pair of study oak doors are to the south."
+Background is a backdrop. Background is everywhere. Understand "room" or "walls" as the background.
 
-The domed chamber from afar is scenery in the foyer. "It's a large chamber, that you can tell. It seems to have a pedestal in its center." Understand "pedestal" as the domed chamber from afar.
+Instead of examining background:
+	try looking;
 
-The sturdy oak doors are doors. The sturdy oak doors are south of the Foyer. The sturdy oak doors are scenery.
+The domed chamber from afar is backdrop. "It's a large, circular chamber with a curved ceiling; you can tell that much from here. A pedestal sits in its center." 
 
-Chapter 2 - The Dome
+Understand "pedestal" as the domed chamber from afar. The domed chamber from afar is in the Foyer.
 
-The Dome is north of the Foyer. "A domed chambers. A foyer lies south, and three hallways lead off in the northern directions. You can also go down."
+Chapter 2 - The Foyer
 
-Chapter 3 - The Laboratory
+The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of sturdy oak doors is to the south." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
+
+The sturdy oak doors are doors. The sturdy oak doors are south of the Foyer. The sturdy oak doors are scenery. The description of the sturdy oak doors is "A pair of intimidating oak doors rising more than twice your height, yet diminished by the height of the foyer's vaulted ceiling." Understand "intimidating" or "intimidating oak doors" as the sturdy oak doors.
+
+The vaulted ceiling is scenery in the Foyer. "The ceiling rests far above you, the frescoes nestled between its vaulted ribs dimly lit by. . . you do not know. They are simply. . . dimly lit."
+
+The frescoes are scenery in the Foyer. "Though dimly lit, the frescoes, each sequestered between a pair of vaulted ribs, are difficult to distinguish from down here." Understand "paintings" as the frescoes.
+
+The vaulted ribs are scenery in the Foyer. "Pairs of stone ribs arc up along the walls and hold up the ceiling." Understand "pillars", "walls" as the vaulted ribs. 
+
+
+Chapter 3 - The Dome
+
+The Dome is north of the Foyer. "A domed chamber. A foyer lies south, and three hallways lead off in the northern directions. You can also go down."
+
+Chapter 4 - The Laboratory
 
 The Lab is northwest of the Dome. "Some kind of laboratory with an exit to the southeast."
 
-Chapter 4 - The Wardrobe
+Chapter 5 - The Wardrobe
 
 The Wardrobe is north of the Dome. "A wardrobe with lots of clothes. An exit lies south."
 
-Chapter 5 - The Ritual Chamber
+Chapter 6 - The Ritual Chamber
 
 The Ritual Chamber is northeast of the Dome. "Some kind of ritual chamber. Exit to the southwest."
 
-Chapter 6 - The Engine Room
+Chapter 7 - The Engine Room
 
 The Mechanical Room is down from the Dome. "The engine room. Only way out is up."
 
-Chapter 7 - The Elemental and Paraelemental Planes of Existence
+Chapter 8 - The Elemental and Paraelemental Planes of Existence
 
 Part 4 - The Plot
 
@@ -116,12 +132,13 @@ Imbuing it with is an action applying to one visible thing and an element.
 
 Understand "imbue [something] with [an element]" as imbuing it with.
 
-Carry out imbuing something with an element (called the stuff) (this is the cannot imbue a non-elemental container rule):
+Carry out imbuing something with an element (this is the cannot imbue a non-elemental container rule):
 	if the noun is not an elemental container:
-		say "You can't imbue that with [the stuff].";
+		say "You can't imbue that with [the second noun].";
 		rule fails;
 		
 Carry out imbuing something with an element (called the stuff) (this is the imbue elemental container with element rule):
-	say "[The noun] glows as it is infused with [stuff].";
 	now the element of the noun is the stuff;
 	
+Report imbuing something with an element (this is the report imbuing an elemental container with an element rule):
+	say "[The noun] glows as it is infused with [the element understood].";
