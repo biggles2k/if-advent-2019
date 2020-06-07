@@ -44,21 +44,14 @@ To say print (stuff - an element):
 Table of Elemental Descriptions
 Element	Display
 earth	"a lot of dirt"
-
-An orb is a kind of elemental container. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." Understand "elemental orb of" or "orb of" as an orb.
-	
-Before listing contents:
-	group orbs together as "orbs";
 	
 A canister is a kind of elemental container. The description of a canister is "A pneumatic tube[if not element-less]. It contains [paragraph break][print element][end if]." Understand "canister of" as a canister.
-
-A symbolic control is a kind of thing. A symbolic control has an element. The element of a symbolic control is usually element-less. A symbolic control can be lit.
 
 Part 3 - The World Model
 
 Chapter 1 - Background
 
-Background is a backdrop. Background is everywhere. Understand "room" or "walls" as the background.
+Background is a backdrop. Background is everywhere. Understand "room" or "walls" or "floor" as the background.
 
 Instead of examining background:
 	try looking;
@@ -75,14 +68,39 @@ The sturdy oak doors are doors. The sturdy oak doors are south of the Foyer. The
 
 The vaulted ceiling is scenery in the Foyer. "The ceiling rests far above you, the frescoes nestled between its vaulted ribs dimly lit by. . . you do not know. They are simply. . . dimly lit."
 
-The frescoes are scenery in the Foyer. "Though dimly lit, the frescoes, each sequestered between a pair of vaulted ribs, are difficult to distinguish from down here." Understand "paintings" as the frescoes.
+The frescoes are scenery in the Foyer. "The frescoes, each sequestered between a pair of vaulted ribs and dimly lit, are difficult to distinguish from down here." Understand "paintings" as the frescoes.
 
 The vaulted ribs are scenery in the Foyer. "Pairs of stone ribs arc up along the walls and hold up the ceiling." Understand "pillars", "walls" as the vaulted ribs. 
 
 
 Chapter 3 - The Dome
 
-The Dome is north of the Foyer. "A domed chamber. A foyer lies south, and three hallways lead off in the northern directions. You can also go down."
+The Dome is north of the Foyer. "You stand in an immense chamber, its ceiling a massive dome of fluted glass. South lies the foyer while hallways lead off in the northerly directions. In the center of the chamber stands a pedestal, and just south of the pedestal, sunk into the perforated steel floor, is a hatch.[paragraph break]Through the dome you see something something..."
+
+The pedestal is scenery in the Dome. "A round pedestal and about as tall as your waistline. Eight stands rim the circumference, each stand located on a compass direction. Upon each stand rests an orb." Understand "stand", "stands", "orbs" as the pedestal.
+
+An orb is a kind of thing. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." An orb has a direction. An orb has an element.  An orb has some text called the abbreviation. Understand the element property as describing an orb. Understand the abbreviation property as describing an orb. Understand "elemental orb of" or "orb of" as an orb.
+
+Some orbs are defined by the Table of Elemental Orbs.
+
+Table of Elemental Orbs
+orb	element	direction	abbreviation
+the north orb	earth	north	"n"
+the northeast orb	element-less	northeast	"ne"
+the east orb	water	east	"e"
+the southeast orb	element-less	southeast	"se"
+the south orb	air	south	"s"
+the southwest orb	element-less	southwest	"sw"
+the west orb	fire	west	"w"
+the northwest orb	element-less	northwest	"nw"
+
+
+When play begins:
+	repeat through Table of Elemental Orbs:
+		now the orb entry is part of the pedestal; 
+
+
+
 
 Chapter 4 - The Laboratory
 
