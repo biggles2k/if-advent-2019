@@ -20,7 +20,9 @@ An element is a kind of value. The elements are earth, air, fire, water, magma, 
 
 Definition: A direction is compass if it is north or it is south or it is east or it is west or it is northeast or it is northwest or it is southeast or it is southwest.
 
-Chapter 2 - New Things
+Chapter 2 - New Stuff
+
+Section 1 - Elemental Containers
 
 An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as an element-less elemental container.
 
@@ -44,8 +46,14 @@ To say print (stuff - an element):
 Table of Elemental Descriptions
 Element	Display
 earth	"a lot of dirt"
+
+A canister is a kind of elemental container. The description of a canister is "A narrow tube of glass about the length of your forearm, capped on one end by a copper lid[if not element-less]. It contains [print element][end if]." Understand "canister of" as a canister.
+
+An orb is a kind of elemental container. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." Understand the element property as describing an orb. Understand "elemental orb of" or "orb of" as an orb.
+
+Section 2 - Mechanical Container
 	
-A canister is a kind of elemental container. The description of a canister is "A pneumatic tube[if not element-less]. It contains [paragraph break][print element][end if]." Understand "canister of" as a canister.
+A mechanical container is a kind of container. A mechanical container has a direction. A mechanical container has an element.  A mechanical container has some text called the abbreviation. Understand the abbreviation property as describing a mechanical container.
 
 Part 3 - The World Model
 
@@ -62,63 +70,174 @@ Understand "pedestal" as the domed chamber from afar. The domed chamber from afa
 
 Chapter 2 - The Foyer
 
-The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of sturdy oak doors is to the south." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
+Section 1 - The Foyer Itself
 
-The sturdy oak doors are doors. The sturdy oak doors are south of the Foyer. The sturdy oak doors are scenery. The description of the sturdy oak doors is "A pair of intimidating oak doors rising more than twice your height, yet diminished by the height of the foyer's vaulted ceiling." Understand "intimidating" or "intimidating oak doors" as the sturdy oak doors.
+The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of sturdy oak doors is to the south." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
 
 The vaulted ceiling is scenery in the Foyer. "The ceiling rests far above you, the frescoes nestled between its vaulted ribs dimly lit by. . . you do not know. They are simply. . . dimly lit."
 
-The frescoes are scenery in the Foyer. "The frescoes, each sequestered between a pair of vaulted ribs and dimly lit, are difficult to distinguish from down here." Understand "paintings" as the frescoes.
+The frescoes are scenery in the Foyer. "The frescoes, each sequestered between a pair of vaulted ribs, are too dimly lit to distinguish from down here." Understand "paintings" as the frescoes.
 
 The vaulted ribs are scenery in the Foyer. "Pairs of stone ribs arc up along the walls and hold up the ceiling." Understand "pillars", "walls" as the vaulted ribs. 
 
+Section 2 - The Way Out
+
+The sturdy oak doors are doors. The sturdy oak doors are south of the Foyer. The sturdy oak doors are scenery. The description of the sturdy oak doors is "A pair of intimidating oak doors rising more than twice your height, yet diminished by the height of the foyer's vaulted ceiling." Understand "intimidating" or "intimidating oak doors" as the sturdy oak doors.
 
 Chapter 3 - The Dome
 
+Section 1 - Inside the Dome
+
 The Dome is north of the Foyer. "You stand in an immense chamber, its ceiling a massive dome of fluted glass. South lies the foyer while hallways lead off in the northerly directions. In the center of the chamber stands a pedestal, and just south of the pedestal, sunk into the perforated steel floor, is a hatch.[paragraph break]Through the dome you see something something..."
 
-The pedestal is scenery in the Dome. "A round pedestal and about as tall as your waistline. Eight stands rim the circumference, each stand located on a compass direction. Upon each stand rests an orb." Understand "stand", "stands", "orbs" as the pedestal.
+Section 2 - The Pedestal and Its Buttons
 
-An orb is a kind of thing. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." An orb has a direction. An orb has an element.  An orb has some text called the abbreviation. Understand the element property as describing an orb. Understand the abbreviation property as describing an orb. Understand "elemental orb of" or "orb of" as an orb.
+The pedestal is scenery in the Dome. "A round pedestal and about as tall as your waistline. Eight buttons rim the circumference, with each button located at a different compass direction." 
 
-Some orbs are defined by the Table of Elemental Orbs.
+Report examining the pedestal:
+	let niche-directions be a list of directions;
+	repeat with niche running through slots:
+		if the niche contains a canister:
+			add the direction of the niche to niche-directions;
+	say "The buttons to the [niche-directions] are glowing.";
+	
+A navigation button is a kind of thing. The description of a navigation button is "A large button, about the size of your palm[glowing algorithm for the direction]." A navigation button has a direction.  A navigation button has some text called the abbreviation. Understand the abbreviation property as describing a navigation button.
 
-Table of Elemental Orbs
-orb	element	direction	abbreviation
-the north orb	earth	north	"n"
-the northeast orb	element-less	northeast	"ne"
-the east orb	water	east	"e"
-the southeast orb	element-less	southeast	"se"
-the south orb	air	south	"s"
-the southwest orb	element-less	southwest	"sw"
-the west orb	fire	west	"w"
-the northwest orb	element-less	northwest	"nw"
+To say glowing algorithm for (the way -  a direction):
+	let the niche be the slot corresponding to a direction of the way in the Table of Column Slots;
+	if the niche is energized:
+		say ". The button is glowing";
+	
+Some navigation buttons are defined by the Table of Pedestal Buttons.
 
+Table of Pedestal Buttons
+navigation button	direction	abbreviation
+the north button	north	"n"
+the northeast button	northeast	"ne"
+the east button	east	"e"
+the southeast button	southeast	"se"
+the south button	south	"s"
+the southwest button	southwest	"sw"
+the west button	west	"w"
+the northwest button	northwest	"nw"
 
 When play begins:
-	repeat through Table of Elemental Orbs:
-		now the orb entry is part of the pedestal; 
+	repeat through Table of Pedestal Buttons:
+		now the navigation button entry is part of the pedestal; 
+		
+Instead of pushing a navigation button (called the pushy thing):
+	let the way be the direction of the pushy thing;
+	let the niche be the slot corresponding to a direction of the way in the Table of Column Slots;
+	let the destination be the element of the niche;
+	let the plane be the room corresponding to the element of the destination in the Table of the Planes;
+
+Section 3 - A Simple Hatch
+
+The  hatch is down from the Dome and up from the Mechanical Room. The hatch is a door. The hatch is closed. The hatch is scenery. The description of the hatch is "A steel hatch, currently [if open]open[otherwise]closed[end if]."
+
+Report opening the hatch when the location is the Dome:
+	say "The hatch creaks open, revealing a way down." instead.
+	
+Chapter 4 - The Mechanical Room
+
+Section 1 - The Room Itself
+
+The description of the Mechanical Room is "You are in a large chamber well beneath the dome, surrounded on all sides by an assortment of churning machinery. Dominating the center of the room is a large, metal column. Next to the column, a ladder leads up to a hatch in the perforated ceiling."
+
+The ladder is scenery in the Mechanical Room. "A narrow steel ladder, leading up to a [if the hatch is open]open[otherwise]closed[end if] hatch."
+
+The machinery is scenery in the Mechanical Room. "A noisy, oversized, mechanical potpourri, consisting of gears and pumps, and an endless number of wires and hoses connecting everything."
+
+Instead of listening when the location is the Mechanical Room:
+	say  "The mechanical cacophony is deafening."
+	
+Section 2 - The Column and Its Slots
+
+The column is scenery in the Mechanical Room. "The column stretches from floor to ceiling and has eight sides to it, each facing a different compass direction. A narrow slot, about a forearm in height, has been chiseled into each side of the column."
+
+Report examining the column:
+	let niche-directions be a list of directions;
+	repeat with niche running through slots:
+		if the niche contains a canister:
+			add the direction of the niche to niche-directions;
+	say "You see a canister in each of the [niche-directions] slots.";
+		
+A slot is a kind of mechanical container. The description of a slot is "The slot is at the bottom of a glass tube of wiring that crawls up the [the direction] side of the column and disappears into the ceiling."
+
+Some slots are defined by the Table of Column Slots.
+
+Table of Column Slots
+slot	element	direction	abbreviation
+the north slot	earth	north	"n"
+the northeast slot	ooze	northeast	"ne"
+the east slot	water	east	"e"
+the southeast slot	ice	southeast	"se"
+the south slot	air	south	"s"
+the southwest slot	smoke	southwest	"sw"
+the west slot	fire	west	"w"
+the northwest slot	magma	northwest	"nw"
+
+Definition: A slot is energized if it contains a canister.
+
+When play begins:
+	repeat through Table of Column Slots:
+		now the slot entry is part of the column; 
+		
+One earth canister is in the north slot.
+One water canister is in the east slot.
+One air canister is in the south slot.
+One fire canister is in the west slot.
 
 
 
+Instead of taking or opening a canister when the noun is in a slot:
+	say "[The noun] seems to be latched in place."
+	
+Instead of inserting a canister into a slot:
+	say "[The noun] readily slips into the slot";
+	if the element of the noun is the element of the second noun:
+		say " and is latched into place. The canister briefly glows and the wires above the slot crackle with energy. The mechanical din of the room briefly increases before everything subsides to normal.";
+		now the noun is in the second noun;
+	otherwise:
+		say ", but nothing seems to happen. After a moment, you remove [the noun] from the slot.";
+		
+Report examining a canister when the noun is in a slot (called the niche):
+	say "The canister has been latched into [the niche]."
 
-Chapter 4 - The Laboratory
+Chapter 5 - The Laboratory
 
 The Lab is northwest of the Dome. "Some kind of laboratory with an exit to the southeast."
 
-Chapter 5 - The Wardrobe
+Chapter 6 - The Wardrobe
 
 The Wardrobe is north of the Dome. "A wardrobe with lots of clothes. An exit lies south."
 
-Chapter 6 - The Ritual Chamber
+Chapter 7 - The Ritual Chamber
 
 The Ritual Chamber is northeast of the Dome. "Some kind of ritual chamber. Exit to the southwest."
 
-Chapter 7 - The Engine Room
-
-The Mechanical Room is down from the Dome. "The engine room. Only way out is up."
-
 Chapter 8 - The Elemental and Paraelemental Planes of Existence
+
+The Plane of Earth is a room.
+The Plane of Water is a room.
+The Plane of Air is a room.
+The Plane of Fire is a room.
+The Plane of Ooze is a room.
+The Plane of Ice is a room.
+The Plane of Smoke is a room.
+The Plane of Magma is a room.
+
+Table of the Planes
+element	room
+earth	Plane of Earth
+water	Plane of Water
+air	Plane of Air
+fire	Plane of Fire
+ooze	Plane of Ooze
+Ice	Plane of Ice
+Smoke	Plane of Smoke
+Magma	Plane of Magma
+
 
 Part 4 - The Plot
 
@@ -155,8 +274,8 @@ Carry out imbuing something with an element (this is the cannot imbue a non-elem
 		say "You can't imbue that with [the second noun].";
 		rule fails;
 		
-Carry out imbuing something with an element (called the stuff) (this is the imbue elemental container with element rule):
+Carry out imbuing an elemental container with an element (called the stuff) (this is the imbue elemental container with element rule):
 	now the element of the noun is the stuff;
 	
-Report imbuing something with an element (this is the report imbuing an elemental container with an element rule):
+Report imbuing an elemental container with an element (this is the report imbuing an elemental container with an element rule):
 	say "[The noun] glows as it is infused with [the element understood].";
