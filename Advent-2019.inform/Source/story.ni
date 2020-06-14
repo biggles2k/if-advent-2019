@@ -18,6 +18,8 @@ Chapter 1 - New Values and Definitions
 
 An element is a kind of value. The elements are earth, air, fire, water, magma, ooze, smoke, ice, and element-less.
 
+The plane of existence is an element that varies. The plane of existence is fire.
+
 Definition: A direction is compass if it is north or it is south or it is east or it is west or it is northeast or it is northwest or it is southeast or it is southwest.
 
 Chapter 2 - New Stuff
@@ -51,9 +53,9 @@ A canister is a kind of elemental container. The description of a canister is "A
 
 An orb is a kind of elemental container. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." Understand the element property as describing an orb. Understand "elemental orb of" or "orb of" as an orb.
 
-Section 2 - Mechanical Container
+Section 2 - Directional Container
 	
-A mechanical container is a kind of container. A mechanical container has a direction. A mechanical container has an element.  A mechanical container has some text called the abbreviation. Understand the abbreviation property as describing a mechanical container.
+A directional container is a kind of container. A directional container has a direction. A directional container has an element.  A directional container has some text called the abbreviation. Understand the abbreviation property as describing a directional container.
 
 Part 3 - The World Model
 
@@ -88,11 +90,26 @@ Chapter 3 - The Dome
 
 Section 1 - Inside the Dome
 
-The Dome is north of the Foyer. "You stand in an immense chamber, its ceiling a massive dome of fluted glass. South lies the foyer while hallways lead off in the northerly directions. In the center of the chamber stands a pedestal, and just south of the pedestal, sunk into the perforated steel floor, is a hatch.[paragraph break]Through the dome you see something something..."
+The Dome is north of the Foyer. "You stand in an immense chamber, its ceiling a massive dome of fluted glass. South lies the foyer while hallways lead off in the northerly directions. In the center of the chamber stands a pedestal, and just south of the pedestal, sunk into the perforated steel floor, is a hatch.[paragraph break]Through the dome you see [through the dome]." Understand "dome" as the background when the location is the Dome.
 
+To say through the dome:
+	choose row with element of the plane of existence from Table of Dome Scenery;
+	say "[description entry]";
+	
+Table of Dome Scenery
+element	description
+earth	"the plane of Earth"
+water	"the Plane of Water"
+air	"the Plane of Air"
+fire	"the Plane of Fire"
+ooze	"the Plane of Ooze"
+ice	"the Plane of Ice"
+smoke	"the Plane of Smoke"
+magma	"the Plane of Magma"
+	
 Section 2 - The Pedestal and Its Buttons
 
-The pedestal is scenery in the Dome. "A round pedestal and about as tall as your waistline. Eight buttons rim the circumference, with each button located at a different compass direction." 
+The pedestal is scenery in the Dome. "A round pedestal about as tall as your waistline. Eight buttons rim the circumference, with each button located in a different compass direction." 
 
 Report examining the pedestal:
 	let niche-directions be a list of directions;
@@ -104,9 +121,11 @@ Report examining the pedestal:
 A navigation button is a kind of thing. The description of a navigation button is "A large button, about the size of your palm[glowing algorithm for the direction]." A navigation button has a direction.  A navigation button has some text called the abbreviation. Understand the abbreviation property as describing a navigation button.
 
 To say glowing algorithm for (the way -  a direction):
-	let the niche be the slot corresponding to a direction of the way in the Table of Column Slots;
+	choose the row with direction of the way from the Table of Column Slots;
+	let the niche be the slot entry;
+	let the selected element be the element entry;
 	if the niche is energized:
-		say ". The button is glowing";
+		say ". The button is [if the plane of existence is the selected element]blinking[otherwise]glowing[end if]";
 	
 Some navigation buttons are defined by the Table of Pedestal Buttons.
 
@@ -128,8 +147,11 @@ When play begins:
 Instead of pushing a navigation button (called the pushy thing):
 	let the way be the direction of the pushy thing;
 	let the niche be the slot corresponding to a direction of the way in the Table of Column Slots;
-	let the destination be the element of the niche;
-	let the plane be the room corresponding to the element of the destination in the Table of the Planes;
+	if the niche is energized and the element of the niche is not the plane of existence:
+		now the plane of existence is the element of the niche;
+		say "Something happens.";
+	otherwise:
+		say "Nothing seems to happen.";
 
 Section 3 - A Simple Hatch
 
@@ -162,7 +184,7 @@ Report examining the column:
 			add the direction of the niche to niche-directions;
 	say "You see a canister in each of the [niche-directions] slots.";
 		
-A slot is a kind of mechanical container. The description of a slot is "The slot is at the bottom of a glass tube of wiring that crawls up the [the direction] side of the column and disappears into the ceiling."
+A slot is a kind of directional container. The description of a slot is "The slot is at the bottom of a glass tube of wiring that crawls up the [the direction] side of the column and disappears into the ceiling."
 
 Some slots are defined by the Table of Column Slots.
 
@@ -188,10 +210,11 @@ One water canister is in the east slot.
 One air canister is in the south slot.
 One fire canister is in the west slot.
 
-
-
 Instead of taking or opening a canister when the noun is in a slot:
 	say "[The noun] seems to be latched in place."
+
+Instead of inserting a canister into an energized slot:
+	say "There is already a canister in the slot!";
 	
 Instead of inserting a canister into a slot:
 	say "[The noun] readily slips into the slot";
@@ -206,7 +229,97 @@ Report examining a canister when the noun is in a slot (called the niche):
 
 Chapter 5 - The Laboratory
 
-The Lab is northwest of the Dome. "Some kind of laboratory with an exit to the southeast."
+Section 1 - The Lab Itself
+
+The Laboratory is northwest of the Dome. "A webwork of glassware, tubes, burners, wires, benches, monitors and other equipment encompasses this immense laboratory. It's difficult to move without disturbing or even breaking something, and occasionally you need to duck under a stray wire or tube. An exit through this delicate web is to the southeast." Understand "laboratory" or "lab" as the background when the location is the Laboratory.
+
+The laboratory equipment is scenery in the Laboratory. "A cornucopia of laboratory equipment seemingly jumbled together at random, but it must make sense to somebody... maybe." Understand "glassware", "tubes", "burners", "wires", "benches", "bench", "monitors" as the laboratory equipment.
+
+Section 2 - The Odd Contraption
+
+The odd contraption is in the Laboratory. "Secluded on a bench in a corner, yet somehow standing out among all of the other equipment, rests an odd contraption." The description of the contraption is "A solid, brass machine with three vertical slots. Tubes and wires connect the left and right slots to the middle one[describe the contents of the odd contraption]. A shiny button, glowing [if the odd contraption is activated]green[otherwise]red[end if], rests just below the middle slot."
+
+To say describe the contents of the odd contraption:
+	repeat with niche running through contraption slots:
+		if the niche contains a canister:
+			say ". In [the niche] is [a list of things contained by the niche]";
+
+A contraption slot is a kind of container.  A contraption slot is fixed in place. The description of a contraption slot is "The narrow slot is about the length of your forearm."
+
+The left slot is a contraption slot. The left slot is part of the contraption.
+
+The middle slot is a contraption slot. The middle slot is part of the contraption.
+
+The right slot is a contraption slot. The right slot is part of the contraption.
+
+Definition: The odd contraption is activated if the middle slot contains a element-less canister and the left slot contains a canister that is not element-less and the right slot contains a canister that is not element-less.
+
+Check inserting something that is not a canister into a contraption slot (this is the can't insert something other than a canister into a contraption slot rule):
+	say "[The noun] does not fit in the slot." instead;
+	
+Instead of inserting a canister into a contraption slot that contains a canister (called the tube) (this is the can't insert a canister into an occupied contraption slot rule):
+	say "That slot is already holding [a tube].";
+	
+Instead of inserting a canister into a contraption slot (called the niche):
+	move the noun to the niche;
+	say "You slide [the noun] into [the second noun] and it clicks into place[if the odd contraption is activated]. You notice the button starts to glow green[end if].";
+	rule succeeds;
+	
+Instead of taking a canister that is contained by a contraption slot (called the niche):
+	say "You remove [the noun] from [the niche][if the odd contraption is activated]; you notice the shiny button switches from glowing green to red[end if].";
+	move the noun to the player;
+
+One water canister is in the left slot. One earth canister is in the right slot. One element-less canister is in the middle slot.
+
+The shiny button is part of the odd contraption. "A large button, glowing[if the odd contraption is activated]green[otherwise]red[end if]."
+
+[
+			Earth		Air		Fire		Water
+	Earth	earth		/		magma	ooze
+	Air		/			air		smoke		ice
+	Fire	magma	smoke	fire			/
+	Water	ooze		ice		/			water
+
+]
+The elemental reactions is a list of list of elements that varies. The elemental reactions is {{earth, element-less, magma, ooze}, {element-less, air, smoke, ice}, {magma, smoke, fire, element-less}, {ooze, ice, element-less, water}}. 
+
+[	
+	1. get the element and element number of the canister in the right slot
+	2. get the element and element number of the canister in the right slot
+	3. determine if elemental reaction is feasible. If so
+		a. get the element corresponding to left and right numbers from the list of elemental reactions
+		b. set the canister in the middle slot to the new element
+		c. empty the canister in the left slot
+		d. empty the canister in the right slot
+]
+Instead of pushing the shiny button when the odd contraption is activated and the left slot contains a canister (called c1) and the right slot contains a canister (called c2) and the middle slot contains a canister (called c3):
+	say "Upon depressing the button, the odd contraption hums and vibrates. A hissing noise sounds as each of the canisters is sealed into place. The tubes leading from the left and right canisters jerk compulsively as [element of c1] and [element of c2] flow through them toward the middle one";
+	let first element num be the num for the element of c1;
+	let second element num be the num for element of c2;
+	debug "[line  break]>> Reacting [element of c1] ([first element num]) with [element of c2] ([second element num]).";
+	if the first element num is 0 or the second element num is 0:
+		debug "[line  break]>> Cannot react [element of c1] ([first element num]) with [element of c2] ([second element num]).";
+		say ", but as substances collide just above the middle canister, the contraption gives a final shudder, an ominous buzzer sounds, and everything shuts down. The button, however, remains glowing a friendly green color.";
+	otherwise:
+		say "[element of c1] and [element of c2] begin to react together as their respective canisters empty. There is a final flash in the middle canister as the reaction completes";
+		let final element be entry first element num of entry second element num in elemental reactions;
+		debug "[line  break]>> Reaction yields [final element]!";
+		now the element of c1 is element-less;
+		now the element of c2 is element-less;
+		now the element of c3 is the final element;	
+		if c3 is element-less:
+			say " and both elements vanish as they negate each other.";
+		otherwise:
+			say ", yielding a canister full of [element of c3].";
+		say "The button is now glowing red."
+	
+To decide which number is the num for (substance - an element):
+	if the substance is earth, decide on 1;
+	if the substance is air, decide on 2;
+	if the substance is fire, decide on  3;
+	if the substance is water, decide on 4;
+	decide on 0;
+	
 
 Chapter 6 - The Wardrobe
 
@@ -234,9 +347,11 @@ water	Plane of Water
 air	Plane of Air
 fire	Plane of Fire
 ooze	Plane of Ooze
-Ice	Plane of Ice
-Smoke	Plane of Smoke
-Magma	Plane of Magma
+ice	Plane of Ice
+smoke	Plane of Smoke
+magma	Plane of Magma
+
+
 
 
 Part 4 - The Plot
