@@ -87,15 +87,12 @@ Background is a backdrop. Background is everywhere. Understand "room" or "walls"
 Instead of examining background:
 	try looking;
 
-The domed chamber from afar is backdrop. "It's a large, circular chamber with a curved ceiling; you can tell that much from here. A pedestal sits in its center." 
-
-Understand "pedestal" as the domed chamber from afar. The domed chamber from afar is in the Foyer.
 
 Chapter 2 - The Foyer
 
 Section 1 - The Foyer Itself
 
-The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of sturdy oak doors is to the south." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
+The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of intimidating oak doors is to the south." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
 
 The vaulted ceiling is scenery in the Foyer. "The ceiling rests far above you, the frescoes nestled between its vaulted ribs dimly lit by. . . you do not know. They are simply. . . dimly lit."
 
@@ -103,9 +100,10 @@ The frescoes are scenery in the Foyer. "The frescoes, each sequestered between a
 
 The vaulted ribs are scenery in the Foyer. "Pairs of stone ribs arc up along the walls and hold up the ceiling." Understand "pillars", "walls" as the vaulted ribs. 
 
-Section 2 - The Way Out
+The domed chamber from afar is scenery in the Foyer. "It's a large, circular chamber with a curved ceiling; you can tell that much from here. A pedestal sits in its center." Understand "pedestal" as the domed chamber from afar.
 
-The sturdy oak doors are doors. The sturdy oak doors are south of the Foyer. The sturdy oak doors are scenery. The description of the sturdy oak doors is "A pair of intimidating oak doors rising more than twice your height, yet diminished by the height of the foyer's vaulted ceiling." Understand "intimidating" or "intimidating oak doors" as the sturdy oak doors.
+Instead of going south from the Foyer:
+	try entering the intimidating oak doors;
 
 Chapter 3 - The Dome
 
@@ -173,6 +171,8 @@ Instead of pushing a navigation button (called the pushy thing):
 	let the niche be the slot corresponding to a direction of the way in the Table of Column Slots;
 	if the niche is energized and the element of the niche is not the plane of existence:
 		now the plane of existence is the element of the niche;
+		choose row with an element of the element of the niche in the Table of the Planes;
+		now the room entry is mapped south of the Foyer;
 		say "Something happens.";
 	otherwise:
 		say "Nothing seems to happen.";
@@ -431,25 +431,43 @@ Instead of taking an orb that is in a stand (called the holder):
 
 Chapter 8 - The Elemental and Paraelemental Planes of Existence
 
-The Plane of Earth is a room.
-The Plane of Water is a room.
-The Plane of Air is a room.
-The Plane of Fire is a room.
-The Plane of Ooze is a room.
-The Plane of Ice is a room.
-The Plane of Smoke is a room.
-The Plane of Magma is a room.
+Section 1 - The Intimidating Oak Doors
+
+The intimidating oak doors are an openable closed container in the Foyer. "A pair of intimidating oak doors." The description of the intimidating oak doors is "A pair of oak doors rising more than twice your height[if the location is the Foyer], yet diminished by the height of the foyer's vaulted ceiling[end if]." Understand "intimidating" or "intimidating oak doors" as the intimidating oak doors.
+
+Rule for printing a locale paragraph about the intimidating oak doors when the location is the Foyer:
+	now the intimidating oak doors are mentioned;
+	
+Rule for printing a locale paragraph about the intimidating oak doors:
+	choose row with an element of the plane of existence in the Table of the Planes;
+	say doors description entry;
+	
+Instead of entering the closed intimidating oak doors:
+	try opening the intimidating oak doors;
+	try entering the intimidating oak doors;
+
+A plane is a kind of room.
+
+The Plane of Earth is a plane.
+The Plane of Water is a plane.
+The Plane of Air is a plane.
+The Plane of Fire is a plane. The Plane of Fire is south of the Foyer.
+The Plane of Ooze is a plane.
+The Plane of Ice is a plane.
+The Plane of Smoke is a plane.
+The Plane of Magma is a plane.
+
 
 Table of the Planes
-element	room
-earth	Plane of Earth
-water	Plane of Water
-air	Plane of Air
-fire	Plane of Fire
-ooze	Plane of Ooze
-ice	Plane of Ice
-smoke	Plane of Smoke
-magma	Plane of Magma
+element	room	doors description
+earth	Plane of Earth	"Some doors are here."
+water	Plane of Water	"Some doors are here."
+air	Plane of Air	"Some doors are here."
+fire	Plane of Fire	"Some doors are here."
+ooze	Plane of Ooze	"Some doors are here."
+ice	Plane of Ice	"Some doors are here."
+smoke	Plane of Smoke	"Some doors are here."
+magma	Plane of Magma	"Some doors are here."
 
 Part 4 - The Plot
 
