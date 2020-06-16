@@ -48,10 +48,31 @@ To say print (stuff - an element):
 Table of Elemental Descriptions
 Element	Display
 earth	"a lot of dirt"
+water	"some water"
+air	"a bunch of air"
+fire	"a flame"
+ooze	"some mud"
+ice	"freezing ice"
+magma	"molten hot lava"
+smoke	"wispy smoke"
 
 A canister is a kind of elemental container. The description of a canister is "A narrow tube of glass about the length of your forearm, capped on one end by a copper lid[if not element-less]. It contains [print element][end if]." Understand "canister of" as a canister.
 
-An orb is a kind of elemental container. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." Understand the element property as describing an orb. Understand "elemental orb of" or "orb of" as an orb.
+An orb is a kind of thing. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." Understand the element property as describing an orb. Understand "elemental orb of" or "orb of" as an orb.
+
+Some orbs are defined by the Table of Elemental Orbs.
+
+Table of Elemental Orbs
+orb	element
+the Orb of Earth	earth
+the Orb of Water	water
+the Orb of Air	air
+the Orb of Fire 	fire
+the Orb of Ooze	ooze
+the Orb of Ice	ice
+the Orb of Smoke	smoke
+the Orb of Magma	magma
+
 
 Section 2 - Directional Container
 	
@@ -113,10 +134,13 @@ The pedestal is scenery in the Dome. "A round pedestal about as tall as your wai
 
 Report examining the pedestal:
 	let niche-directions be a list of directions;
+	let the blinking direction be a direction;
 	repeat with niche running through slots:
 		if the niche contains a canister:
 			add the direction of the niche to niche-directions;
-	say "The buttons to the [niche-directions] are glowing.";
+			if the element of the niche is the plane of existence:
+				now the blinking direction is the direction of the niche;
+	say "The buttons to the [niche-directions] are glowing. The button to [the blinking direction] is blinking.";
 	
 A navigation button is a kind of thing. The description of a navigation button is "A large button, about the size of your palm[glowing algorithm for the direction]." A navigation button has a direction.  A navigation button has some text called the abbreviation. Understand the abbreviation property as describing a navigation button.
 
@@ -168,7 +192,7 @@ The description of the Mechanical Room is "You are in a large chamber well benea
 
 The ladder is scenery in the Mechanical Room. "A narrow steel ladder, leading up to a [if the hatch is open]open[otherwise]closed[end if] hatch."
 
-The machinery is scenery in the Mechanical Room. "A noisy, oversized, mechanical potpourri, consisting of gears and pumps, and an endless number of wires and hoses connecting everything."
+The machinery is scenery in the Mechanical Room. "A noisy, oversized, mechanical potpourri, consisting of gears and pumps, and an endless number of wires and hoses connecting everything." Understand "gears", "pumps", "wires", "hoses" as the machinery.
 
 Instead of listening when the location is the Mechanical Room:
 	say  "The mechanical cacophony is deafening."
@@ -325,9 +349,85 @@ Chapter 6 - The Wardrobe
 
 The Wardrobe is north of the Dome. "A wardrobe with lots of clothes. An exit lies south."
 
-Chapter 7 - The Ritual Chamber
+Chapter 7 - The Octagonal Chamber
 
-The Ritual Chamber is northeast of the Dome. "Some kind of ritual chamber. Exit to the southwest."
+Section 1 - The Chamber Itself
+
+The Octagonal Chamber is northeast of the Dome. "A large chamber, the gray stone of its eight walls extending endlessly upward. Egress lies through the southwest wall; the other walls, each set in a compass direction, are laced with runes. A large octagon has been etched into the floor." Understand "chamber" as the background when the location is the Octagonal Chamber.
+
+The gray stone walls are scenery in the Octagonal Chamber. "Constructed from slick, gray stone, each wall is set in one of the compass directions, and all extend upward, out of sight. Runes inscribe the walls." Understand "wall" as gray stone walls.
+
+The runes are scenery in the Octagonal Chamber. "Symbols that you cannot comprehend."
+
+Section 2 - The Octagon and Its Stands
+
+The octagon is scenery in the Octagonal Chamber. "Carved into the stone floor of the chamber, each line of the octagon runs underneath a small stand, paralleling a wall of the room[print up octagon]."
+
+To say print up octagon:
+	let occupied ways be a list of directions; 
+	let activated ways be a list of directions;
+	repeat with holder running through stands:
+		if the holder contains an orb (called the sphere):
+			add the direction of the holder to occupied ways;
+			if the element of the holder is the element of the sphere:
+				add the direction of the holder to activated ways;
+	if the number of entries in occupied ways is not zero:
+		say ". The stand[if the number of entries in occupied ways is greater than one]s[end if] to the [occupied ways] [if the number of entries in occupied ways is greater than one]each [end if]hold[if the number of entries in occupied ways is one]s[end if] an orb";
+	if the number of entries in activated ways is not zero:
+		say ". The line[if the number of entries in activated ways is greater than one]s[end if] to the [activated ways] [if the number of entries in activated ways is one]is[otherwise]are[end if] glowing";
+
+A stand is a kind of directional container. A stand is scenery. The description of a  stand is "Sculpted in the semblance of a claw with four talons, it juts up from the middle of [the direction] side of the inscribed octagon." Understand "small", "stand", "claw", "side" as a stand.
+
+Some stands are defined by the Table of Ritual Stands.
+	
+Table of Ritual Stands
+stand	element	direction	abbreviation
+the north stand	earth	north	"n"
+the northeast stand	ooze	northeast	"ne"
+the east stand	water	east	"e"
+the southeast stand	ice	southeast	"se"
+the south stand	air	south	"s"
+the southwest stand	smoke	southwest	"sw"
+the west stand	fire	west	"w"
+the northwest stand	magma	northwest	"nw"
+
+When play begins:
+	repeat through the Table of Ritual Stands:
+		move the stand entry to the Octagonal Chamber;
+		move the Orb of Fire to the west stand;
+
+Section 3 - Inserting Orbs into Stands
+
+Definition: A stand is occupied if it contains an orb.
+
+Definition: The octagon is activated if the north stand contains the Orb of Earth and the northeast stand contains the Orb of Ooze and the east stand contains the Orb of Water and the southeast stand contains the Orb of Ice and the south stand contains the Orb of Air and the southwest stand contains the Orb of Smoke and the west stand contains the Orb of Fire and the northwest stand contains the Orb of Magma.
+
+Instead of putting something on a stand:
+	try inserting the noun into the second noun;
+
+Check inserting something that is not an orb into a stand (called the holder) (this is the can't insert something that is not an orb into a stand rule):
+	say "[The noun] does not appear to fit in [the holder].";
+	
+Check inserting an orb into an occupied stand (this is the can't insert an orb into an occupied stand rule):
+	say "There is already an orb on the stand." instead;
+	
+Instead of inserting an orb into a stand that is not occupied:
+	say "You place [the noun] onto [the second noun].";
+	now the noun is in the second noun;
+	if the element of the noun is the element of the second noun:
+		say "[line break]The talons of the stand grasp the sphere tightly; the line running beneath stand begins to glow.";
+	if the octagon is activated:
+		say "[line break]Something happens. Something wonderful.";
+		repeat through the Table of Elemental Orbs:
+			now the orb entry is nowhere;
+	
+Instead of taking an orb that is in a stand (called the holder):
+	if the element of the noun is the element of the holder:
+		say "The talons of the stand release the orb; the line running beneath the stand stops glowing.";
+	otherwise:
+		say "You take [the noun] from [the holder].";
+	move the noun to the player;
+
 
 Chapter 8 - The Elemental and Paraelemental Planes of Existence
 
@@ -351,16 +451,15 @@ ice	Plane of Ice
 smoke	Plane of Smoke
 magma	Plane of Magma
 
-
-
-
 Part 4 - The Plot
+
+Chapter 1 -  Starting the Game
 
 Part 5 - Help
 
-Part 6 - Testing - Not for release
+Part 6 - Testing
 
-Chapter 1 - Notes for Beta Testers
+Chapter 1 - Notes for Beta Testers - Not for release
 
 [Allows beta testers to write notes in game.]
 After reading a command (this is the ignore beta-comments rule):
@@ -372,14 +471,16 @@ Chapter 2 - Debugging
 
 [ Gotta debug! ]
 Debugging is a truth state that varies. Debugging is false.
-
-When play begins:
-	now debugging is true;
 	
 To debug (msg - some text):
 	if debugging is true:
-		say "[msg][line break]";
-		
+		say "[msg][line break]";		
+
+When play begins:
+	now debugging is true;
+
+Chapter 3 - Special Commands - Not for release
+
 Imbuing it with is an action applying to one visible thing and an element.
 
 Understand "imbue [something] with [an element]" as imbuing it with.
@@ -394,3 +495,9 @@ Carry out imbuing an elemental container with an element (called the stuff) (thi
 	
 Report imbuing an elemental container with an element (this is the report imbuing an elemental container with an element rule):
 	say "[The noun] glows as it is infused with [the element understood].";
+	
+Chapter 4 - Testing Commands - Not for release
+
+Test gather-orbs with "purloin orb of earth / purloin orb of air / purloin orb of fire / purloin orb of water / purloin orb of smoke / purloin orb of magma/ purloin orb of ice / purloin orb of ooze".
+
+Test place-orbs with "put orb of earth on north stand / x octagon / put orb of ooze on northeast stand / x octagon /put orb of water on east stand / x octagon / put orb of ice on southeast stand /x octagon / put orb of air on south stand /x octagon / put orb of smoke on southwest stand /x octagon / put orb of fire on west stand /x octagon / put orb of magma on northwest stand / x octagon".
