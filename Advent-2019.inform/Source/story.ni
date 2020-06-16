@@ -433,20 +433,46 @@ Chapter 8 - The Elemental and Paraelemental Planes of Existence
 
 Section 1 - The Intimidating Oak Doors
 
-The intimidating oak doors are an openable closed container in the Foyer. "A pair of intimidating oak doors." The description of the intimidating oak doors is "A pair of oak doors rising more than twice your height[if the location is the Foyer], yet diminished by the height of the foyer's vaulted ceiling[end if]." Understand "intimidating" or "intimidating oak doors" as the intimidating oak doors.
+The intimidating oak doors are an openable closed container in the Foyer. "A pair of intimidating oak doors." The description of the intimidating oak doors is "A pair of oak doors rising more than twice your height[if the location is the Foyer], yet diminished by the height of the foyer's vaulted ceiling[end if][state of oak doors].". Understand "intimidating" or "intimidating oak doors" or "door" as the intimidating oak doors.
 
+To say state of oak doors:
+	if the intimidating oak doors are closed:
+		say ". The doors are closed";
+	otherwise if the location is a plane:
+		say ". The doors are open, revealing a foyer of great antiquity";
+	otherwise if the location is the Foyer:
+		say ". The doors are open, revealing [the reveal of the room south of the Foyer]";
+			
 Rule for printing a locale paragraph about the intimidating oak doors when the location is the Foyer:
 	now the intimidating oak doors are mentioned;
 	
-Rule for printing a locale paragraph about the intimidating oak doors:
-	choose row with an element of the plane of existence in the Table of the Planes;
-	say doors description entry;
+Rule for printing a locale paragraph about the intimidating oak doors when the location is a plane (called the area):
+	say doors description of the area;
 	
 Instead of entering the closed intimidating oak doors:
 	try opening the intimidating oak doors;
-	try entering the intimidating oak doors;
+	
+Carry out opening the intimidating oak doors when the location is the foyer:
+	move the surreal landscape to the foyer;
+	
+Report opening the intimidating oak doors when the location is the foyer:
+	say "You open the doors[first time], stunned at what you see because you're clearly not in Sigil anymore[only]. Beyond the doorframe is a surreal landscape: ";
+	choose the row with the element of the plane of existence in the Table of the Planes;
+	say reveal of the room entry;
+	say  ".[paragraph break]What keeps the planescape beyond the doorframe... you don't know. There must be a barrier of some sort protecting you from the outside.";
+	rule succeeds;
 
-A plane is a kind of room.
+Carry out closing the intimidating oak doors when the location is the foyer:
+	now the surreal landscape is nowhere;
+	
+Section 2 - Planes of Existence
+
+A plane is a kind of room. A plane has some text called the reveal. The reveal of a plane is usually "a plane of existence". A plane has some text called the doors description. The doors description of a plane is usually "Some intimidating oak doors are here."
+
+The surreal landscape is scenery.
+
+Instead of examining the surreal landscape:
+	say "Through the doorframe you see [reveal of the room south of the Foyer]."
 
 The Plane of Earth is a plane.
 The Plane of Water is a plane.
@@ -459,20 +485,23 @@ The Plane of Magma is a plane.
 
 
 Table of the Planes
-element	room	doors description
-earth	Plane of Earth	"Some doors are here."
-water	Plane of Water	"Some doors are here."
-air	Plane of Air	"Some doors are here."
-fire	Plane of Fire	"Some doors are here."
-ooze	Plane of Ooze	"Some doors are here."
-ice	Plane of Ice	"Some doors are here."
-smoke	Plane of Smoke	"Some doors are here."
-magma	Plane of Magma	"Some doors are here."
+element	room	
+earth	Plane of Earth
+water	Plane of Water
+air	Plane of Air
+fire	Plane of Fire
+ooze	Plane of Ooze
+ice	Plane of Ice
+smoke	Plane of Smoke
+magma	Plane of Magma
 
 Part 4 - The Plot
 
 Chapter 1 -  Starting the Game
 
+When  play begins:
+	say "This place is bigger than you thought."
+	
 Part 5 - Help
 
 Part 6 - Testing
