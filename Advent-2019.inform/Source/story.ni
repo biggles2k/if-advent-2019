@@ -26,7 +26,7 @@ Chapter 2 - New Stuff
 
 Section 1 - Elemental Containers
 
-An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as an element-less elemental container.
+An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as an element-less elemental container. Understand "essence" as an imbued elemental container.
 
 Definition: An elemental container is imbued if it is not element-less.
 
@@ -34,7 +34,7 @@ Before printing the name of a element-less elemental container:
 	say "empty ";
 
 After printing the name of an imbued elemental container:
-	say " of [element]".
+	say " with an essence of [element]".
 
 Before printing the plural name of a element-less elemental container:
 	say "empty ";
@@ -43,40 +43,31 @@ Rule for printing the plural name of an imbued elemental container when listing 
 	say "[element]";
 
 To say print (stuff - an element):
-	say "a lot of [stuff]";
+		choose row with element of the stuff from Table of Elemental Descriptions;
+	say display entry;
 
 Table of Elemental Descriptions
 Element	Display
-earth	"a lot of dirt"
-water	"some water"
-air	"a bunch of air"
-fire	"a flame"
-ooze	"some mud"
-ice	"freezing ice"
-magma	"molten hot lava"
-smoke	"wispy smoke"
+earth	"earth shimmering with ore"
+water	"a crystal-clear volume of water"
+air	"a vortex of air swirling against the glass"
+fire	"flames brushing up against the glass"
+ooze	"a viscous, slimy substance oozing against the glass"
+ice	"a crystalline lattice of ice"
+magma	"a mixture of molten hot rock"
+smoke	"clouds of filthy smoke"
 
-A canister is a kind of elemental container. The description of a canister is "A narrow tube of glass about the length of your forearm, capped on one end by a copper lid[if not element-less]. It contains [print element][end if]." Understand "canister of" as a canister.
+A canister is a kind of elemental container. The description of a canister is "A narrow tube of glass about the length of your forearm, capped on one end by a copper lid[if not element-less]. It contains [print element][end if]." Understand "canister of", "copper", "lid" as a canister.
 
-An orb is a kind of thing. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." Understand the element property as describing an orb. Understand "elemental orb of" or "orb of" as an orb.
-
-Some orbs are defined by the Table of Elemental Orbs.
-
-Table of Elemental Orbs
-orb	element
-the Orb of Earth	earth
-the Orb of Water	water
-the Orb of Air	air
-the Orb of Fire 	fire
-the Orb of Ooze	ooze
-the Orb of Ice	ice
-the Orb of Smoke	smoke
-the Orb of Magma	magma
-
-
-Section 2 - Directional Container
+Section 2 - Directional Containers
 	
 A directional container is a kind of container. A directional container has a direction. A directional container has an element.  A directional container has some text called the abbreviation. Understand the abbreviation property as describing a directional container.
+
+Chapter 3 - New Relationships
+
+Attachment relates things to each other. 
+
+The verb to be connected to means the attachment relation.
 
 Part 3 - The World Model
 
@@ -87,12 +78,11 @@ Background is a backdrop. Background is everywhere. Understand "room" or "walls"
 Instead of examining background:
 	try looking;
 
-
 Chapter 2 - The Foyer
 
 Section 1 - The Foyer Itself
 
-The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of intimidating oak doors is to the south." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
+The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of intimidating oak doors is to the south. Next to the doors is an open hole." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
 
 The vaulted ceiling is scenery in the Foyer. "The ceiling rests far above you, the frescoes nestled between its vaulted ribs dimly lit by. . . you do not know. They are simply. . . dimly lit."
 
@@ -104,6 +94,29 @@ The domed chamber from afar is scenery in the Foyer. "It's a large, circular cha
 
 Instead of going south from the Foyer:
 	try entering the intimidating oak doors;
+	
+Section 2 - The Hole and Hose
+
+The hole is scenery in the Foyer. "A large, threaded hole has been carved into the wall next to the doors. You can feel a rush of air coming out of it."
+		
+Instead of searching the hole:
+	say "You don't see anything in it, though a steady flow of air rushes out of it."
+	
+Instead of tying the hose to the hole:
+	if the hose is connected to the hole:
+		say "The hose is already connected to the hole.";
+	otherwise:
+		now the hose is connected to the hole;
+		say "When you thread the hose into the hole, the hose inflates with air.";
+
+Instead of tying the hole to the hose:
+		try tying the hose to the hole; 
+
+Instead of going somewhere when the location is the Foyer and the hose is connected to the hole:
+	if the player encloses the hose or the player encloses something connected to the hose:
+		say "You're not going anywhere with the hose attached to the wall.";
+	otherwise:
+		continue the action;
 
 Chapter 3 - The Dome
 
@@ -111,20 +124,24 @@ Section 1 - Inside the Dome
 
 The Dome is north of the Foyer. "You stand in an immense chamber, its ceiling a massive dome of fluted glass. South lies the foyer while hallways lead off in the northerly directions. In the center of the chamber stands a pedestal, and just south of the pedestal, sunk into the perforated steel floor, is a hatch.[paragraph break]Through the dome you see [through the dome]." Understand "dome" as the background when the location is the Dome.
 
+Outside the dome is scenery in the Dome. The description of outside the dome is "Through the dome you see [through the dome]."
+
+Understand "forest", "stalactites", "cavern" as outside the dome when the plane of existence is earth.
+
 To say through the dome:
 	choose row with element of the plane of existence from Table of Dome Scenery;
 	say "[description entry]";
 	
 Table of Dome Scenery
 element	description
-earth	"the plane of Earth"
-water	"the Plane of Water"
-air	"the Plane of Air"
-fire	"the Plane of Fire"
-ooze	"the Plane of Ooze"
-ice	"the Plane of Ice"
-smoke	"the Plane of Smoke"
-magma	"the Plane of Magma"
+earth	"a forest of stalactites hanging from the ceiling of an enormous cavern"
+water	"water rising endlessly above the glass, as if this place is submerged in the depths of an ocean"
+air	"a crystal-clear, blue sky"
+fire	"enormous flames brush against the glass as if the chamber sits in the maw of an endless inferno"
+ooze	"a gelatinous substance coating the glass "
+ice	"a forest of icicles hanging from the ceiling of an enormous cavern of ice"
+smoke	"thick roiling clouds of smoke"
+magma	"thick rivulets of molten rock pouring over the glass as if this place rests in the active cauldron of a volcano"
 	
 Section 2 - The Pedestal and Its Buttons
 
@@ -173,7 +190,7 @@ Instead of pushing a navigation button (called the pushy thing):
 		now the plane of existence is the element of the niche;
 		choose row with an element of the element of the niche in the Table of the Planes;
 		now the room entry is mapped south of the Foyer;
-		say "Something happens.";
+		say "When you push the button, a roar of machinery emanates from below, vibrating the floor. The whole chamber seems to tilt one way, then the other, then again, forcing you to grasp the pedestal to steady yourself. After a moment, the shaking and noise subsides. Everything returns to normal except now, through the dome, you see [through the dome].";
 	otherwise:
 		say "Nothing seems to happen.";
 
@@ -255,13 +272,13 @@ Chapter 5 - The Laboratory
 
 Section 1 - The Lab Itself
 
-The Laboratory is northwest of the Dome. "A webwork of glassware, tubes, burners, wires, benches, monitors and other equipment encompasses this immense laboratory. It's difficult to move without disturbing or even breaking something, and occasionally you need to duck under a stray wire or tube. An exit through this delicate web is to the southeast." Understand "laboratory" or "lab" as the background when the location is the Laboratory.
+The Laboratory is northwest of the Dome. "A webwork of glassware, tubes, burners, wires, benches, monitors and other equipment encompasses this immense laboratory. It's difficult to move without disturbing or even breaking something, and occasionally you need to duck under a stray wire or tube. An exit from this delicate web of instrumentation is to the southeast." Understand "laboratory" or "lab" as the background when the location is the Laboratory.
 
 The laboratory equipment is scenery in the Laboratory. "A cornucopia of laboratory equipment seemingly jumbled together at random, but it must make sense to somebody... maybe." Understand "glassware", "tubes", "burners", "wires", "benches", "bench", "monitors" as the laboratory equipment.
 
 Section 2 - The Odd Contraption
 
-The odd contraption is in the Laboratory. "Secluded on a bench in a corner, yet somehow standing out among all of the other equipment, rests an odd contraption." The description of the contraption is "A solid, brass machine with three vertical slots. Tubes and wires connect the left and right slots to the middle one[describe the contents of the odd contraption]. A shiny button, glowing [if the odd contraption is activated]green[otherwise]red[end if], rests just below the middle slot."
+The odd contraption is in the Laboratory. "Secluded on a bench in a corner, yet somehow standing out among all of the other equipment, rests an odd contraption." The description of the contraption is "A solid, brass machine with three vertical slots. Tubes and wires connect the left and right slots to the middle one[describe the contents of the odd contraption]. A shiny button, glowing [if the odd contraption is activated]green[otherwise]red[end if], rests just below the middle slot." The odd contraption is fixed in place.
 
 To say describe the contents of the odd contraption:
 	repeat with niche running through contraption slots:
@@ -343,11 +360,82 @@ To decide which number is the num for (substance - an element):
 	if the substance is fire, decide on  3;
 	if the substance is water, decide on 4;
 	decide on 0;
-	
 
 Chapter 6 - The Wardrobe
 
-The Wardrobe is north of the Dome. "A wardrobe with lots of clothes. An exit lies south."
+Section 1 - The Wardrobe Itself
+
+The Wardrobe is north of the Dome. "Racks of clothes seem to extend endlessly in every direction. An exit lies south."
+
+The racks of clothes are scenery in the Wardrobe. "A seemingly endless supply of clothes and costumes. You wouldn't know where to begin to look."
+
+Section 2 - The Diving Suit
+
+The rubber suit is a wearable thing in the Wardrobe. "Standing in one corner is an oversized rubber suit, complete with metal helmet." The description of the rubber suit is "A bulky, seamless suit of rubber topped with a bulbous, metal helmet. The helmet has several, round viewports for visibility in its front and sides, and a [if the rubber suit is connected to the hose]large valve connected to a rubber hose[otherwise]large, open valve[end if] on its back." Understand "rubber", "metal", "helmet", "viewports", "valve", "open valve" as the rubber suit.
+		
+Carry out going a compass direction (called the way) when the rubber suit is worn:
+	say "[one of]Wearing the ungainly suit[or]Sweating profusely from the heat of the suit[purely at random], you stiffly stump off to [the way].[line break]";
+
+After going somewhere when the player encloses the rubber suit and the hose is connected to the rubber suit:
+	if the player is not carrying the hose:
+		move the hose to the location of the rubber suit;
+		say "Attached to the rubber suit, the hose trails along behind you.";
+	continue the action;
+
+After wearing the rubber suit:
+	say "It's a struggle, but you're able to get into the suit and seal the helmet over your head.";
+	the suit suffocates in two turns from now;
+	
+At the time when the suit suffocates:
+	if the player is not suited up:
+		say "Without any real air flow, it's suffocating and too hot in the rubber suit to continue wearing. It takes awhile, but you manage to unseal the helmet and strip off the suit.";
+		move the rubber suit to the player; 
+	
+Report taking off the rubber suit:
+	say "It takes some time, but you're able unseal the helmet and peel off the rubber suit." instead;
+
+Before looking when the rubber suit is worn:
+	say "It's difficult to see through the small viewports of the rubber suit's helmet, but you are able to make out your surroundings."
+	
+After taking something when the rubber suit is worn:
+	say "It's difficult to take [the noun] while ensconced in this rubber suit, but you manage it."
+	
+Section 3 - The Hose
+
+The hose is in the Wardrobe. "A coil of thick hose lies beneath one of the racks of clothes." The description of the hose is "A thick, rubber hose about a hundred feet long with copper, threaded ends." Understand "copper", "ends" as the hose.
+
+Rule for printing room description details of the hose:
+	if the hose is connected to something:
+		say " (attached to [the list of things connected to the hose])".
+		
+Rule for printing inventory details of the hose:
+	if the hose is connected to something:
+		say " (attached to [the list of things connected to the hose])".
+		
+After examining the hose when the hose is connected to something:
+	say "The hose is attached to [the list of things connected to the hose]."
+	
+Instead of taking the hose when the hose is connected to something:
+	say "Before taking the hose, you detach it from [the list of things connected to the hose].";
+	repeat with item running through things connected to the hose:
+		now the item is not connected to the hose;
+	move the hose to the player;
+
+After taking the hose:
+	say "You coil up the hose and heft it over your shoulder."
+	
+Instead of tying the hose to the rubber suit:
+	now the hose is handled;
+	if the hose is connected to the rubber suit:
+		say "The hose is already connected to the suit.";
+	otherwise:
+		now the hose is connected to the rubber suit;
+		say "You thread one end of the hose into the valve that's on the back of the rubber suit's helmet.";
+		rule succeeds;
+			
+[	now the hose is connected to the rubber suit;
+	say "[a list of things connected to the rubber suit].";	
+]
 
 Chapter 7 - The Octagonal Chamber
 
@@ -359,7 +447,25 @@ The gray stone walls are scenery in the Octagonal Chamber. "Constructed from sli
 
 The runes are scenery in the Octagonal Chamber. "Symbols that you cannot comprehend."
 
-Section 2 - The Octagon and Its Stands
+Section 2 - The Orbs
+
+An orb is a kind of thing. The description of an orb is "A clear sphere, like a crystal ball, that you can easily cradle with two hands[if not element-less]. Within the sphere you see [print element][end if]." Understand the element property as describing an orb. Understand "elemental orb of" or "orb of" as an orb.
+
+Some orbs are defined by the Table of Elemental Orbs.
+
+Table of Elemental Orbs
+orb	element
+the Orb of Earth	earth
+the Orb of Water	water
+the Orb of Air	air
+the Orb of Fire 	fire
+the Orb of Ooze	ooze
+the Orb of Ice	ice
+the Orb of Smoke	smoke
+the Orb of Magma	magma
+
+
+Section 3 - The Octagon and Its Stands
 
 The octagon is scenery in the Octagonal Chamber. "Carved into the stone floor of the chamber, each line of the octagon runs underneath a small stand, paralleling a wall of the room[print up octagon]."
 
@@ -394,9 +500,9 @@ the northwest stand	magma	northwest	"nw"
 When play begins:
 	repeat through the Table of Ritual Stands:
 		move the stand entry to the Octagonal Chamber;
-		move the Orb of Fire to the west stand;
+	move the Orb of Fire to the west stand;
 
-Section 3 - Inserting Orbs into Stands
+Section 4 - Inserting Orbs into Stands
 
 Definition: A stand is occupied if it contains an orb.
 
@@ -433,7 +539,7 @@ Chapter 8 - The Elemental and Paraelemental Planes of Existence
 
 Section 1 - The Intimidating Oak Doors
 
-The intimidating oak doors are an openable closed container in the Foyer. "A pair of intimidating oak doors." The description of the intimidating oak doors is "A pair of oak doors rising more than twice your height[if the location is the Foyer], yet diminished by the height of the foyer's vaulted ceiling[end if][state of oak doors].". Understand "intimidating" or "intimidating oak doors" or "door" as the intimidating oak doors.
+The intimidating oak doors are an openable closed container in the Foyer. "A pair of intimidating oak doors." The description of the intimidating oak doors is "A pair of oak doors rising more than twice your height[if the location is the Foyer], yet diminished by the height of the foyer's vaulted ceiling[end if][state of oak doors]." The intimidating oak doors are fixed in place. Understand "intimidating" or "intimidating oak doors" or "door" as the intimidating oak doors.
 
 To say state of oak doors:
 	if the intimidating oak doors are closed:
@@ -443,15 +549,13 @@ To say state of oak doors:
 	otherwise if the location is the Foyer:
 		say ". The doors are open, revealing [the reveal of the room south of the Foyer]";
 			
-Rule for printing a locale paragraph about the intimidating oak doors when the location is the Foyer:
+Rule for printing a locale paragraph about the intimidating oak doors:
 	now the intimidating oak doors are mentioned;
 	
 Rule for printing a locale paragraph about the intimidating oak doors when the location is a plane (called the area):
+	now the intimidating oak doors are mentioned;
 	say doors description of the area;
-	
-Instead of entering the closed intimidating oak doors:
-	try opening the intimidating oak doors;
-	
+			
 Carry out opening the intimidating oak doors when the location is the foyer:
 	move the surreal landscape to the foyer;
 	
@@ -464,25 +568,56 @@ Report opening the intimidating oak doors when the location is the foyer:
 
 Carry out closing the intimidating oak doors when the location is the foyer:
 	now the surreal landscape is nowhere;
-	
-Section 2 - Planes of Existence
 
-A plane is a kind of room. A plane has some text called the reveal. The reveal of a plane is usually "a plane of existence". A plane has some text called the doors description. The doors description of a plane is usually "Some intimidating oak doors are here."
+Instead of entering the closed intimidating oak doors:
+	try opening the intimidating oak doors;
+
+Definition: A person is suited up if a person is wearing the rubber suit and the hose is connected to the suit and the hose is connected to the hole.
+
+Instead of entering the open intimidating oak doors when the location is the Foyer and the player is not suited up:
+	if the player is wearing the rubber suit and (the hose is not connected to the hole or the hose is not connected to the rubber suit):
+		say "It's already hot and suffocating in this rubber suit; you certainly wouldn't last long out there.";
+	otherwise:
+		say "Without any protection, you don't think you would last too long out there.";
+
+Instead of entering the open intimidating oak doors when the location is the Foyer and the player is suited up:
+	say "Encased in the rubber suit and tethered to the wall by the hose, you step out into the plane...";
+	let the area be the room south of the Foyer;
+	move the player to the area;
+	move the intimidating oak doors to the area; 
+
+Section 3 - Planes of Existence
+
+A plane is a kind of room. A plane has some text called the reveal. The reveal of a plane is usually "a plane of existence". A plane has some text called the doors description. The doors description of a plane is usually "Nearby are a pair of intimidating oak doors that open into a hallway of great antiquity."
 
 The surreal landscape is scenery.
 
 Instead of examining the surreal landscape:
-	say "Through the doorframe you see [reveal of the room south of the Foyer]."
+	say "Through the doorframe you see [reveal of the room south of the Foyer]." Understand "plane", "planescape" as the surreal landscape.
+	
+Instead of going a direction when the location is a plane:
+	say "Direction seems meaningless here.";
 
-The Plane of Earth is a plane.
-The Plane of Water is a plane.
-The Plane of Air is a plane.
-The Plane of Fire is a plane. The Plane of Fire is south of the Foyer.
-The Plane of Ooze is a plane.
-The Plane of Ice is a plane.
-The Plane of Smoke is a plane.
-The Plane of Magma is a plane.
+Instead of entering the open intimidating oak doors when the location is a plane:
+	say "You make your way to the doors and step into the foyer of great antiquity.";
+	move the player to the Foyer;
+	move the intimidating oak doors to the Foyer; 
+	
+The Plane of Earth is a plane. "An enormous cavern of stalactites and stalagmites, all illuminated by glowing jewels and shimmering veins of ore." The reveal is "an immense cavern of stalagmites and stalactites illuminated by glowing jewels". The doors description is "Embedded in one of the cavern's walls is the familiar pair of intimidating oak doors". Understand "veins of ore", "veins", "ore", "glowing jewels", "jewels", "gems", "stalactites", "stalagmites" as the background when the location is the Plane of Earth.
 
+The Plane of Water is a plane. "You swim through a sea of crystal, blue-green water with no bottom or surface to be seen." The reveal is "an underwater realm shimmering with a crystal, blue-green light". The doors description is "Floating serenely and not far from you are the familiar oak doors". Understand "sea", "ocean", "water" as the background when the location is the Plane of Water.
+
+The Plane of Air is a plane. "You float in a world of brilliant blue, as if hovering in a clear, cloudless sky with no ground in sight." The reveal is "an endless plane of brilliant blue, as if you peer out into a clear, cloudless sky". The doors description is "Floating serenely nearby are a pair of intimidating oak doors that open into a hallway of great antiquity". Understand "sky", "air" as the background when the location is the Plane of Air.
+
+The Plane of Fire is a plane. The Plane of Fire is south of the Foyer."Flames tower around you as you stand (or float--it's hard to say) in the middle of an endless inferno. Although the suit and hose provide a steady stream of air, you can feel the heat clawing at you." The reveal is "an endless inferno of towering flames". The doors description is "Seemingly untouched by the flames, a pair of intimidating oak doors lead back into the safety of an immense foyer". Understand "flames", "fire", "inferno" as the background when the location is the Plane of Fire.
+
+The Plane of Ooze is a plane. "A gelatinous, slimy hole of mud, bubbling and belching beneath your feet. Every step is a struggle as the thick ocher attempts to drag you down. Occasionally, a fountain of the sickly stuff erupts, spattering the landscape with giant, viscous globs." The reveal is "rivers of viscous slime permeate a wasteland of mud and ooze". The doors description is "Rising out of the muck are a pair of oak doors". Understand "mud", "slime", "ocher", "globs", "stuff", "ooze" as the background when the location is the Plane of Ooze.
+
+The Plane of Ice is a plane. "Icicles as thick and long as towers hang from above in this immense cavern, and thick, crystalline structures weave a lattice of ice along the floors and walls.  You can feel the chill seeping its way through the rubber of your suit." The reveal is "a cavernous chamber of ice". The doors description is "A pair of intimidating oak doors rest in one of the walls." Understand "ice", "icicles", "cavern", "cave", "structures", "lattice" as the background when the location is the Plane of Ice.
+
+The Plane of Smoke is a plane. "You float within a thick, dark, roiling cloud of soot, ash and brimstone. It's uncomfortably warm here." The reveal is "clouds of thick, roiling smoke". The doors description is "Barely discernible through the smoke are a pair of oak doors leading into a foyer of great antiquity". Understand "clouds", "soot", "ash", "brimstone", "smoke" as the background when the location is the Plane of Smoke.
+
+The Plane of Magma is a plane. "Molten rock slithers, bubbles, and bursts around you, occasionally erupting in a geyser of liquid red. Heat permeates your suit, slicking your skin with sweat." The reveal is "a slithering plain of molten rock". The doors description is "Rising out of the lava is a pair of intimidating oak doors." Understand "magma", "lava", "molten rock", "geyser" as the background when the location is the Plane of Magma.
 
 Table of the Planes
 element	room	
@@ -495,12 +630,29 @@ ice	Plane of Ice
 smoke	Plane of Smoke
 magma	Plane of Magma
 
+Section 4 - Opening and Closing Canisters
+
+Instead of opening an element-less canister:
+	say "You flip open the empty canister by pulling back the lid with a finger. Nothing happens, so you close the canister back up.";
+	
+Instead of opening an imbued canister:
+	say "You flip open the canister by pulling back the lid with a finger. The ethereal essence within seeps out of the canister and disappears.";
+	now the element of the noun is element-less;
+	
+Instead of opening an element-less canister when the location is a Plane:
+	enchant the noun;
+	
+To enchant (the holder - a canister):
+	say "You flip open the empty canister by pulling back the lid with a finger. The canister begins to glow and vibrate, as an essence of [plane of existence] from your surroundings streams into the canister. The canister hums for a momemt, then goes silent.";
+	now the element of the holder is the plane of existence;
+	
+
 Part 4 - The Plot
 
 Chapter 1 -  Starting the Game
 
 When  play begins:
-	say "This place is bigger than you thought."
+	say "This place is bigger than you thought..."
 	
 Part 5 - Help
 
@@ -548,3 +700,25 @@ Chapter 4 - Testing Commands - Not for release
 Test gather-orbs with "purloin orb of earth / purloin orb of air / purloin orb of fire / purloin orb of water / purloin orb of smoke / purloin orb of magma/ purloin orb of ice / purloin orb of ooze".
 
 Test place-orbs with "put orb of earth on north stand / x octagon / put orb of ooze on northeast stand / x octagon /put orb of water on east stand / x octagon / put orb of ice on southeast stand /x octagon / put orb of air on south stand /x octagon / put orb of smoke on southwest stand /x octagon / put orb of fire on west stand /x octagon / put orb of magma on northwest stand / x octagon".
+
+
+[
+
+NEXT STEP
+  * Opening and closing canisters
+
+TODO's
+
+  * Description of hole when hose is attached.
+  * Automagically wear suit, attach hose, etc. when entering the oak doors
+  * Automagically remove suit when going north of the Foyer
+  * Describe air coming into suit when attaching hose to the wall when wearing suit
+  * Describe air flow leaving suit when detaching hose from hole while wearing suit
+  * Start suffocating player when hose is not attached to hole (every turn rule)
+  * Trying to close doors when in a plane because it would cut off hose.
+  * Detaching the hose
+  * Detaching the hose when in a plane - that's a bad idea
+  * Dome scenery - understand different words depending on the plane
+  * Foyer scenery - understand different words as describing the plane
+  * Different warnings for the plane of existence when leaving the door
+]
