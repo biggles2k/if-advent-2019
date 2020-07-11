@@ -1,7 +1,7 @@
 "Advent-2019" by "Michael D. Hilborn"
 
 [
- Started: Mon, Nov 11, 2019
+ Started: Mon, Nov 11, 2019 with Inform Build 6M62.
 ]
 
 Part 1 - For Release
@@ -138,7 +138,7 @@ earth	"a forest of stalactites hanging from the ceiling of an enormous cavern"
 water	"water rising endlessly above the glass, as if this place is submerged in the depths of an ocean"
 air	"a crystal-clear, blue sky"
 fire	"enormous flames brush against the glass as if the chamber sits in the maw of an endless inferno"
-ooze	"a gelatinous substance coating the glass "
+ooze	"a gelatinous substance coating the glass"
 ice	"a forest of icicles hanging from the ceiling of an enormous cavern of ice"
 smoke	"thick roiling clouds of smoke"
 magma	"thick rivulets of molten rock pouring over the glass as if this place rests in the active cauldron of a volcano"
@@ -214,6 +214,8 @@ The machinery is scenery in the Mechanical Room. "A noisy, oversized, mechanical
 Instead of listening when the location is the Mechanical Room:
 	say  "The mechanical cacophony is deafening."
 	
+Four element-less canisters are in the Mechanical Room.
+
 Section 2 - The Column and Its Slots
 
 The column is scenery in the Mechanical Room. "The column stretches from floor to ceiling and has eight sides to it, each facing a different compass direction. A narrow slot, about a forearm in height, has been chiseled into each side of the column."
@@ -275,6 +277,8 @@ Section 1 - The Lab Itself
 The Laboratory is northwest of the Dome. "A webwork of glassware, tubes, burners, wires, benches, monitors and other equipment encompasses this immense laboratory. It's difficult to move without disturbing or even breaking something, and occasionally you need to duck under a stray wire or tube. An exit from this delicate web of instrumentation is to the southeast." Understand "laboratory" or "lab" as the background when the location is the Laboratory.
 
 The laboratory equipment is scenery in the Laboratory. "A cornucopia of laboratory equipment seemingly jumbled together at random, but it must make sense to somebody... maybe." Understand "glassware", "tubes", "burners", "wires", "benches", "bench", "monitors" as the laboratory equipment.
+
+Two element-less canisters are in the Laboratory.
 
 Section 2 - The Odd Contraption
 
@@ -512,7 +516,7 @@ Instead of putting something on a stand:
 	try inserting the noun into the second noun;
 
 Check inserting something that is not an orb into a stand (called the holder) (this is the can't insert something that is not an orb into a stand rule):
-	say "[The noun] does not appear to fit in [the holder].";
+	say "[The noun] does not appear to fit in [the holder]." instead;
 	
 Check inserting an orb into an occupied stand (this is the can't insert an orb into an occupied stand rule):
 	say "There is already an orb on the stand." instead;
@@ -521,7 +525,7 @@ Instead of inserting an orb into a stand that is not occupied:
 	say "You place [the noun] onto [the second noun].";
 	now the noun is in the second noun;
 	if the element of the noun is the element of the second noun:
-		say "[line break]The talons of the stand grasp the sphere tightly; the line running beneath stand begins to glow.";
+		say "[line break]The talons of the stand grasp the sphere tightly; the line running beneath the stand begins to glow.";
 	if the octagon is activated:
 		say "[line break]Something happens. Something wonderful.";
 		repeat through the Table of Elemental Orbs:
@@ -554,7 +558,7 @@ Rule for printing a locale paragraph about the intimidating oak doors:
 	
 Rule for printing a locale paragraph about the intimidating oak doors when the location is a plane (called the area):
 	now the intimidating oak doors are mentioned;
-	say doors description of the area;
+	say "[doors description of the area].";
 			
 Carry out opening the intimidating oak doors when the location is the foyer:
 	move the surreal landscape to the foyer;
@@ -574,17 +578,27 @@ Instead of entering the closed intimidating oak doors:
 
 Definition: A person is suited up if a person is wearing the rubber suit and the hose is connected to the suit and the hose is connected to the hole.
 
+Explored a plane is a truth state that varies. Explored a plane is false.
+
 Instead of entering the open intimidating oak doors when the location is the Foyer and the player is not suited up:
 	if the player is wearing the rubber suit and (the hose is not connected to the hole or the hose is not connected to the rubber suit):
 		say "It's already hot and suffocating in this rubber suit; you certainly wouldn't last long out there.";
+	otherwise if explored a plane is true:
+		say "Before going out the door, you don the rubber suit and attach the hose.";
+		now the player is wearing the rubber suit;
+		now the hose is connected to the rubber suit;
+		now the hose is connected to the hole;
+		try entering the intimidating oak doors;
 	otherwise:
 		say "Without any protection, you don't think you would last too long out there.";
 
 Instead of entering the open intimidating oak doors when the location is the Foyer and the player is suited up:
 	say "Encased in the rubber suit and tethered to the wall by the hose, you step out into the plane...";
 	let the area be the room south of the Foyer;
-	move the player to the area;
+	now explored a plane is true;
 	move the intimidating oak doors to the area; 
+	move hose to the Foyer;
+	move the player to the area;
 
 Section 3 - Planes of Existence
 
@@ -605,19 +619,34 @@ Instead of entering the open intimidating oak doors when the location is a plane
 	
 The Plane of Earth is a plane. "An enormous cavern of stalactites and stalagmites, all illuminated by glowing jewels and shimmering veins of ore." The reveal is "an immense cavern of stalagmites and stalactites illuminated by glowing jewels". The doors description is "Embedded in one of the cavern's walls is the familiar pair of intimidating oak doors". Understand "veins of ore", "veins", "ore", "glowing jewels", "jewels", "gems", "stalactites", "stalagmites" as the background when the location is the Plane of Earth.
 
+The Orb of Earth is in the Plane of Earth. The initial appearance of the Orb of Earth is "Sitting atop a broken stalagmite is a crystal orb."
+
 The Plane of Water is a plane. "You swim through a sea of crystal, blue-green water with no bottom or surface to be seen." The reveal is "an underwater realm shimmering with a crystal, blue-green light". The doors description is "Floating serenely and not far from you are the familiar oak doors". Understand "sea", "ocean", "water" as the background when the location is the Plane of Water.
 
+The Orb of Water is in the Plane of Water. The initial appearance of the Orb of Water is "Floating before you like a lone bubble is a crystal orb."
+
 The Plane of Air is a plane. "You float in a world of brilliant blue, as if hovering in a clear, cloudless sky with no ground in sight." The reveal is "an endless plane of brilliant blue, as if you peer out into a clear, cloudless sky". The doors description is "Floating serenely nearby are a pair of intimidating oak doors that open into a hallway of great antiquity". Understand "sky", "air" as the background when the location is the Plane of Air.
+
+The Orb of Air is in the Plane of Air. The initial appearance of the Orb of Air is "A crystal orb floats within arm's reach."
 
 The Plane of Fire is a plane. The Plane of Fire is south of the Foyer."Flames tower around you as you stand (or float--it's hard to say) in the middle of an endless inferno. Although the suit and hose provide a steady stream of air, you can feel the heat clawing at you." The reveal is "an endless inferno of towering flames". The doors description is "Seemingly untouched by the flames, a pair of intimidating oak doors lead back into the safety of an immense foyer". Understand "flames", "fire", "inferno" as the background when the location is the Plane of Fire.
 
 The Plane of Ooze is a plane. "A gelatinous, slimy hole of mud, bubbling and belching beneath your feet. Every step is a struggle as the thick ocher attempts to drag you down. Occasionally, a fountain of the sickly stuff erupts, spattering the landscape with giant, viscous globs." The reveal is "rivers of viscous slime permeate a wasteland of mud and ooze". The doors description is "Rising out of the muck are a pair of oak doors". Understand "mud", "slime", "ocher", "globs", "stuff", "ooze" as the background when the location is the Plane of Ooze.
 
+The Orb of Ooze is in the Plane of Ooze. The initial appearance of the Orb of Ooze is "Stuck in the muck is a crystal orb."
+
 The Plane of Ice is a plane. "Icicles as thick and long as towers hang from above in this immense cavern, and thick, crystalline structures weave a lattice of ice along the floors and walls.  You can feel the chill seeping its way through the rubber of your suit." The reveal is "a cavernous chamber of ice". The doors description is "A pair of intimidating oak doors rest in one of the walls." Understand "ice", "icicles", "cavern", "cave", "structures", "lattice" as the background when the location is the Plane of Ice.
+
+The Orb of Ice is in the Plane of Ice. The initial appearance of the Orb of Ice is "A crystal orb rests on a nearby shelf of ice."
 
 The Plane of Smoke is a plane. "You float within a thick, dark, roiling cloud of soot, ash and brimstone. It's uncomfortably warm here." The reveal is "clouds of thick, roiling smoke". The doors description is "Barely discernible through the smoke are a pair of oak doors leading into a foyer of great antiquity". Understand "clouds", "soot", "ash", "brimstone", "smoke" as the background when the location is the Plane of Smoke.
 
+The Orb of Smoke is in the Plane of Smoke. The initial appearance of the Orb of Smoke is "A crystal orb floats nearby."
+
 The Plane of Magma is a plane. "Molten rock slithers, bubbles, and bursts around you, occasionally erupting in a geyser of liquid red. Heat permeates your suit, slicking your skin with sweat." The reveal is "a slithering plain of molten rock". The doors description is "Rising out of the lava is a pair of intimidating oak doors." Understand "magma", "lava", "molten rock", "geyser" as the background when the location is the Plane of Magma.
+
+The Orb of Magma is in the Plane of Magma. The initial appearance of the Orb of Magma is "Half-buried in a small crater of liquid rock lies a crystal orb."
+
 
 Table of the Planes
 element	room	
@@ -705,12 +734,11 @@ Test place-orbs with "put orb of earth on north stand / x octagon / put orb of o
 [
 
 NEXT STEP
-  * Opening and closing canisters
+ * Start making clues and plots
 
 TODO's
 
   * Description of hole when hose is attached.
-  * Automagically wear suit, attach hose, etc. when entering the oak doors
   * Automagically remove suit when going north of the Foyer
   * Describe air coming into suit when attaching hose to the wall when wearing suit
   * Describe air flow leaving suit when detaching hose from hole while wearing suit
@@ -721,4 +749,14 @@ TODO's
   * Dome scenery - understand different words depending on the plane
   * Foyer scenery - understand different words as describing the plane
   * Different warnings for the plane of existence when leaving the door
+  * Octagon description right up front?
+
+
+BUGS
+ * >put ice in se stand
+The canister with an essence of ice does not appear to fit in the southeast stand.
+
+You put the canister with an essence of ice into the southeast stand
+
+* Doors description not showing in planes
 ]
