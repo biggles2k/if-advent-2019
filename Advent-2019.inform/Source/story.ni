@@ -69,6 +69,15 @@ Attachment relates things to each other.
 
 The verb to be connected to means the attachment relation.
 
+Chapter 4 - New Verbs
+
+Detaching it from is an action applying to two touchable things and requiring light.
+
+Understand "detach [something] from [something]" as detaching it from. Understand "remove [something] from [something]" as detaching it from.
+
+Carry out detaching it from (this is the block detaching rule):
+	say "You can't detach that."
+
 Part 3 - The World Model
 
 Chapter 1 - Background
@@ -82,41 +91,63 @@ Chapter 2 - The Foyer
 
 Section 1 - The Foyer Itself
 
-The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of intimidating oak doors is to the south. Next to the doors is an open hole." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
+The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of intimidating oak doors is to the south. Next to the doors is a hole." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
 
+[
 The vaulted ceiling is scenery in the Foyer. "The ceiling rests far above you, the frescoes nestled between its vaulted ribs dimly lit by. . . you do not know. They are simply. . . dimly lit."
 
 The frescoes are scenery in the Foyer. "The frescoes, each sequestered between a pair of vaulted ribs, are too dimly lit to distinguish from down here." Understand "paintings" as the frescoes.
 
 The vaulted ribs are scenery in the Foyer. "Pairs of stone ribs arc up along the walls and hold up the ceiling." Understand "pillars", "walls" as the vaulted ribs. 
+]
 
 The domed chamber from afar is scenery in the Foyer. "It's a large, circular chamber with a curved ceiling; you can tell that much from here. A pedestal sits in its center." Understand "pedestal" as the domed chamber from afar.
 
 Instead of going south from the Foyer:
 	try entering the intimidating oak doors;
 	
-Section 2 - The Hole and Hose
+Section 2 - The Hole
 
-The hole is scenery in the Foyer. "A large, threaded hole has been carved into the wall next to the doors. You can feel a rush of air coming out of it."
+The hole is scenery in the Foyer. "A small, threaded hole has been carved into the wall next to the doors[if the hose is connected to the hole]. A hose is attached to the hole[otherwise]. You can feel a rush of air coming out of it[end if]." Understand "wall" as the hole.
 		
 Instead of searching the hole:
-	say "You don't see anything in it, though a steady flow of air rushes out of it."
+	if the hose is connected to the hole:
+		say "You would have to detach the hose first.";
+	otherwise:
+		say "You don't see anything through the hole, though a steady flow of air rushes out of it.";
 	
 Instead of tying the hose to the hole:
 	if the hose is connected to the hole:
 		say "The hose is already connected to the hole.";
 	otherwise:
 		now the hose is connected to the hole;
-		say "When you thread the hose into the hole, the hose inflates with air.";
+		say "When you thread the hose into the hole, the hose inflates with air[if the player is wearing the rubber suit] and a soft breeze enters the helmet of your suit[end if].";
 
 Instead of tying the hole to the hose:
 		try tying the hose to the hole; 
 
 Instead of going somewhere when the location is the Foyer and the hose is connected to the hole:
 	if the player encloses the hose or the player encloses something connected to the hose:
-		say "You're not going anywhere with the hose attached to the wall.";
+		if the player is wearing the rubber suit:
+			say "Before doing so, you remove the rubber suit and leave it behind.";
+			move the rubber suit to the Foyer;
+			move the hose to the Foyer;
+			continue the action;
+		otherwise:
+			say "You're not going anywhere with the hose attached to the wall.";
 	otherwise:
 		continue the action;
+
+Instead of detaching the hose from the hole:
+	if the hose is not connected to the hole:
+		say "The hose is not connected to the hole." instead;
+	otherwise:
+		say "You detach the hose from the hole. The hose deflates[if the player is wearing the rubber suit]and the gentle breeze within the suit's helmet dies out[end if].";
+		now the hose is not connected to the hole;
+		rule succeeds;
+		
+Instead of detaching the hole from the hose:
+	try detaching the hose from the hole;
 
 Chapter 3 - The Dome
 
@@ -375,7 +406,7 @@ The racks of clothes are scenery in the Wardrobe. "A seemingly endless supply of
 
 Section 2 - The Diving Suit
 
-The rubber suit is a wearable thing in the Wardrobe. "Standing in one corner is an oversized rubber suit, complete with metal helmet." The description of the rubber suit is "A bulky, seamless suit of rubber topped with a bulbous, metal helmet. The helmet has several, round viewports for visibility in its front and sides, and a [if the rubber suit is connected to the hose]large valve connected to a rubber hose[otherwise]large, open valve[end if] on its back." Understand "rubber", "metal", "helmet", "viewports", "valve", "open valve" as the rubber suit.
+The rubber suit is a wearable thing in the Wardrobe. "Standing in one corner is an oversized rubber suit, complete with metal helmet." The description of the rubber suit is "A bulky, seamless suit of rubber topped with a bulbous, metal helmet. The helmet has several, round viewports for visibility in its front and sides, and a [if the rubber suit is connected to the hose]large valve connected to a rubber hose[otherwise]open, threaded valve[end if] on its back." Understand "rubber", "metal", "helmet", "viewports", "valve", "open valve" as the rubber suit.
 		
 Carry out going a compass direction (called the way) when the rubber suit is worn:
 	say "[one of]Wearing the ungainly suit[or]Sweating profusely from the heat of the suit[purely at random], you stiffly stump off to [the way].[line break]";
@@ -387,7 +418,7 @@ After going somewhere when the player encloses the rubber suit and the hose is c
 	continue the action;
 
 After wearing the rubber suit:
-	say "It's a struggle, but you're able to get into the suit and seal the helmet over your head.";
+	say "It's a struggle, but you're able to get into the suit and seal the helmet over your head[if the player is suited up]. A gentle breeze of air flows into the helmet[end if].";
 	the suit suffocates in two turns from now;
 	
 At the time when the suit suffocates:
@@ -418,12 +449,15 @@ Rule for printing inventory details of the hose:
 		
 After examining the hose when the hose is connected to something:
 	say "The hose is attached to [the list of things connected to the hose]."
-	
+
+[	
 Instead of taking the hose when the hose is connected to something:
 	say "Before taking the hose, you detach it from [the list of things connected to the hose].";
 	repeat with item running through things connected to the hose:
 		now the item is not connected to the hose;
 	move the hose to the player;
+	rule succeeds;
+]
 
 After taking the hose:
 	say "You coil up the hose and heft it over your shoulder."
@@ -434,12 +468,22 @@ Instead of tying the hose to the rubber suit:
 		say "The hose is already connected to the suit.";
 	otherwise:
 		now the hose is connected to the rubber suit;
-		say "You thread one end of the hose into the valve that's on the back of the rubber suit's helmet.";
+		say "You thread one end of the hose into the valve that's on the back of the rubber suit's helmet[if the hose is connected to the hole]. A gentle breeze flows into the helmet[end if].";
 		rule succeeds;
-			
-[	now the hose is connected to the rubber suit;
-	say "[a list of things connected to the rubber suit].";	
-]
+		
+Instead of detaching the hose from the rubber suit:
+	if the hose is not connected to the rubber suit:
+		say "The hose is not connected to the suit." instead;
+	otherwise if the player is wearing the rubber suit:
+		say "You reach behind the helmet and manage to detach the hose from the suit[if the hose is connected to the hole]. The gentle breeze within the helmet dies out[end if].";
+		the suit suffocates in two turns from now;
+	otherwise:
+		say "You detach the hose from the suit's helmet.";
+	now the hose is not connected to the rubber suit;
+	rule succeeds;
+	
+Instead of detaching the rubber suit from the hose:
+	try detaching the hose from the rubber suit;
 
 Chapter 7 - The Octagonal Chamber
 
@@ -558,13 +602,16 @@ Rule for printing a locale paragraph about the intimidating oak doors:
 	
 Rule for printing a locale paragraph about the intimidating oak doors when the location is a plane (called the area):
 	now the intimidating oak doors are mentioned;
-	say "[doors description of the area].";
+	say "[doors description of the area]. You are tethered to a hose that snakes its way back through the doors.";
+	
+Rule for printing a locale paragraph about the hose when the location is a plane:
+	now the hose is mentioned;
 			
 Carry out opening the intimidating oak doors when the location is the foyer:
 	move the surreal landscape to the foyer;
 	
 Report opening the intimidating oak doors when the location is the foyer:
-	say "You open the doors[first time], stunned at what you see because you're clearly not in Sigil anymore[only]. Beyond the doorframe is a surreal landscape: ";
+	say "You open the doors[first time] and halt in your tracks, stunned at what you see because you're clearly not in Sigil anymore[only]. Beyond the doorframe is a surreal landscape: ";
 	choose the row with the element of the plane of existence in the Table of the Planes;
 	say reveal of the room entry;
 	say  ".[paragraph break]What keeps the planescape beyond the doorframe... you don't know. There must be a barrier of some sort protecting you from the outside.";
@@ -597,7 +644,7 @@ Instead of entering the open intimidating oak doors when the location is the Foy
 	let the area be the room south of the Foyer;
 	now explored a plane is true;
 	move the intimidating oak doors to the area; 
-	move hose to the Foyer;
+	move hose to the area;
 	move the player to the area;
 
 Section 3 - Planes of Existence
@@ -609,13 +656,20 @@ The surreal landscape is scenery.
 Instead of examining the surreal landscape:
 	say "Through the doorframe you see [reveal of the room south of the Foyer]." Understand "plane", "planescape" as the surreal landscape.
 	
+Instead of going north when the location is a plane:
+	try entering the intimidating oak doors;
+	
 Instead of going a direction when the location is a plane:
 	say "Direction seems meaningless here.";
 
 Instead of entering the open intimidating oak doors when the location is a plane:
 	say "You make your way to the doors and step into the foyer of great antiquity.";
-	move the player to the Foyer;
+	move the hose to the Foyer;
 	move the intimidating oak doors to the Foyer; 
+	move the player to the Foyer;
+	
+Instead of closing the open intimidating oak doors when the location is a plane:
+	say "Closing the doors would most likely cut off the air supply through the hose.";
 	
 The Plane of Earth is a plane. "An enormous cavern of stalactites and stalagmites, all illuminated by glowing jewels and shimmering veins of ore." The reveal is "an immense cavern of stalagmites and stalactites illuminated by glowing jewels". The doors description is "Embedded in one of the cavern's walls is the familiar pair of intimidating oak doors". Understand "veins of ore", "veins", "ore", "glowing jewels", "jewels", "gems", "stalactites", "stalagmites" as the background when the location is the Plane of Earth.
 
@@ -734,18 +788,19 @@ Test place-orbs with "put orb of earth on north stand / x octagon / put orb of o
 [
 
 NEXT STEP
+ * Clean up hose text
  * Start making clues and plots
 
 TODO's
 
-  * Description of hole when hose is attached.
-  * Automagically remove suit when going north of the Foyer
-  * Describe air coming into suit when attaching hose to the wall when wearing suit
-  * Describe air flow leaving suit when detaching hose from hole while wearing suit
-  * Start suffocating player when hose is not attached to hole (every turn rule)
-  * Trying to close doors when in a plane because it would cut off hose.
-  * Detaching the hose
-  * Detaching the hose when in a plane - that's a bad idea
+  X Description of hole when hose is attached.
+  X Automagically remove suit when going north of the Foyer
+  X Describe air coming into suit when attaching hose to the wall when wearing suit
+  X Describe air flow leaving suit when detaching hose from hole while wearing suit
+  X Start suffocating player when hose is not attached to hole (every turn rule)
+  X Trying to close doors when in a plane because it would cut off hose.
+  X Detaching the hose - verb
+  X Detaching the hose when in a plane - that's a bad idea
   * Dome scenery - understand different words depending on the plane
   * Foyer scenery - understand different words as describing the plane
   * Different warnings for the plane of existence when leaving the door
@@ -753,10 +808,7 @@ TODO's
 
 
 BUGS
- * >put ice in se stand
-The canister with an essence of ice does not appear to fit in the southeast stand.
+* >attach hose to wall
+You can't see any such thing
 
-You put the canister with an essence of ice into the southeast stand
-
-* Doors description not showing in planes
 ]
