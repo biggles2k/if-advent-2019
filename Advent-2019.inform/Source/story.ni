@@ -48,7 +48,7 @@ To say print (stuff - an element):
 
 Table of Elemental Descriptions
 Element	Display
-earth	"earth shimmering with ore"
+earth	"a quantity of earth"
 water	"a crystal-clear volume of water"
 air	"a vortex of air swirling against the glass"
 fire	"flames brushing up against the glass"
@@ -91,15 +91,13 @@ Chapter 2 - The Foyer
 
 Section 1 - The Foyer Itself
 
-The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of intimidating oak doors is to the south. Next to the doors is a hole." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
+The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of intimidating oak doors[first time] (didn't you enter a single door?)[only] is to the south. Next to the doors is a hole." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
 
-[
 The vaulted ceiling is scenery in the Foyer. "The ceiling rests far above you, the frescoes nestled between its vaulted ribs dimly lit by. . . you do not know. They are simply. . . dimly lit."
 
 The frescoes are scenery in the Foyer. "The frescoes, each sequestered between a pair of vaulted ribs, are too dimly lit to distinguish from down here." Understand "paintings" as the frescoes.
 
 The vaulted ribs are scenery in the Foyer. "Pairs of stone ribs arc up along the walls and hold up the ceiling." Understand "pillars", "walls" as the vaulted ribs. 
-]
 
 The domed chamber from afar is scenery in the Foyer. "It's a large, circular chamber with a curved ceiling; you can tell that much from here. A pedestal sits in its center." Understand "pedestal" as the domed chamber from afar.
 
@@ -153,15 +151,31 @@ Chapter 3 - The Dome
 
 Section 1 - Inside the Dome
 
-The Dome is north of the Foyer. "You stand in an immense chamber, its ceiling a massive dome of fluted glass. South lies the foyer while hallways lead off in the northerly directions. In the center of the chamber stands a pedestal, and just south of the pedestal, sunk into the perforated steel floor, is a hatch.[paragraph break]Through the dome you see [through the dome]." Understand "dome" as the background when the location is the Dome.
+The Dome is north of the Foyer. "You stand in an immense chamber, its ceiling a massive dome of fluted glass. South lies the foyer while hallways lead off in the northerly directions. In the center of the chamber stands a pedestal, and at the southern base of the pedestal, sunk into the perforated steel floor, is a hatch.[paragraph break]Through the dome you see [through the dome]." Understand "dome" as the background when the location is the Dome.
 
 Outside the dome is scenery in the Dome. The description of outside the dome is "Through the dome you see [through the dome]."
 
 Understand "forest", "stalactites", "cavern" as outside the dome when the plane of existence is earth.
 
+Understand "water", "ocean", "sea" as outside the dome when the plane of existence is water.
+
+Understand "sky", "air" as outside the dome when the plane of existence is air.
+
+Understand "flames", "fire", "inferno" as outside the dome when the plane of existence is fire.
+
+Understand "ooze", "substance", "gelatinous substance" as outside the dome when the plane of existence is ooze.
+
+Understand "icicles", "cavern", "ice" as outside the dome when the plane of existence is ice.
+
+Understand "clouds", "smoke" as outside the dome when the plane of existence is smoke.
+
+Understand "magma", "molten rock", "rock", "lava" as outside the dome when the plane of existence is magma.
+
 To say through the dome:
 	choose row with element of the plane of existence from Table of Dome Scenery;
 	say "[description entry]";
+	
+Does the player mean examining outside the dome: it is very likely.
 	
 Table of Dome Scenery
 element	description
@@ -186,7 +200,7 @@ Report examining the pedestal:
 			add the direction of the niche to niche-directions;
 			if the element of the niche is the plane of existence:
 				now the blinking direction is the direction of the niche;
-	say "The buttons to the [niche-directions] are glowing. The button to [the blinking direction] is blinking.";
+	say "The buttons to the [niche-directions] are glowing. The button to [the blinking direction] is also blinking.";
 	
 A navigation button is a kind of thing. The description of a navigation button is "A large button, about the size of your palm[glowing algorithm for the direction]." A navigation button has a direction.  A navigation button has some text called the abbreviation. Understand the abbreviation property as describing a navigation button.
 
@@ -238,9 +252,9 @@ Section 1 - The Room Itself
 
 The description of the Mechanical Room is "You are in a large chamber well beneath the dome, surrounded on all sides by an assortment of churning machinery. Dominating the center of the room is a large, metal column. Next to the column, a ladder leads up to a hatch in the perforated ceiling."
 
-The ladder is scenery in the Mechanical Room. "A narrow steel ladder, leading up to a [if the hatch is open]open[otherwise]closed[end if] hatch."
+The ladder is scenery in the Mechanical Room. "A narrow steel ladder, leading up to [if the hatch is open]an open[otherwise]a closed[end if] hatch."
 
-The machinery is scenery in the Mechanical Room. "A noisy, oversized, mechanical potpourri, consisting of gears and pumps, and an endless number of wires and hoses connecting everything." Understand "gears", "pumps", "wires", "hoses" as the machinery.
+The machinery is scenery in the Mechanical Room. "A noisy, oversized, mechanical potpourri consisting of gears, pumps, and an endless number of wires and hoses connecting everything." Understand "gears", "pumps", "wires", "hoses" as the machinery.
 
 Instead of listening when the location is the Mechanical Room:
 	say  "The mechanical cacophony is deafening."
@@ -258,7 +272,7 @@ Report examining the column:
 			add the direction of the niche to niche-directions;
 	say "You see a canister in each of the [niche-directions] slots.";
 		
-A slot is a kind of directional container. The description of a slot is "The slot is at the bottom of a glass tube of wiring that crawls up the [the direction] side of the column and disappears into the ceiling."
+A slot is a kind of directional container. The description of a slot is "The slot is at the bottom of a glass conduit of wires that crawls up the [the direction] side of the column and disappears into the ceiling." Understand "conduit", "conduit of wires", "wires" as a slot.
 
 Some slots are defined by the Table of Column Slots.
 
@@ -377,7 +391,7 @@ Instead of pushing the shiny button when the odd contraption is activated and th
 		debug "[line  break]>> Cannot react [element of c1] ([first element num]) with [element of c2] ([second element num]).";
 		say ", but as substances collide just above the middle canister, the contraption gives a final shudder, an ominous buzzer sounds, and everything shuts down. The button, however, remains glowing a friendly green color.";
 	otherwise:
-		say "[element of c1] and [element of c2] begin to react together as their respective canisters empty. There is a final flash in the middle canister as the reaction completes";
+		say ". The [element of c1] and [element of c2] begin to react together as their respective canisters empty. There is a final flash in the middle canister as the reaction completes";
 		let final element be entry first element num of entry second element num in elemental reactions;
 		debug "[line  break]>> Reaction yields [final element]!";
 		now the element of c1 is element-less;
@@ -386,8 +400,8 @@ Instead of pushing the shiny button when the odd contraption is activated and th
 		if c3 is element-less:
 			say " and both elements vanish as they negate each other.";
 		otherwise:
-			say ", yielding a canister full of [element of c3].";
-		say "The button is now glowing red."
+			say ", yielding a canister full of [element of c3].";			
+		say "[line break]The button is now glowing red."
 	
 To decide which number is the num for (substance - an element):
 	if the substance is earth, decide on 1;
@@ -400,13 +414,23 @@ Chapter 6 - The Wardrobe
 
 Section 1 - The Wardrobe Itself
 
-The Wardrobe is north of the Dome. "Racks of clothes seem to extend endlessly in every direction. An exit lies south."
+The Wardrobe is north of the Dome. "Racks of clothes extend endlessly in every direction except to the south where you can see an exit."
 
 The racks of clothes are scenery in the Wardrobe. "A seemingly endless supply of clothes and costumes. You wouldn't know where to begin to look."
+	
+Instead of going up when the location is the Wardrobe:
+	say "You can't go that way."
+
+Instead of going up when the location is the Wardrobe:
+	try going up;
+	
+Instead of going nowhere when the location is the Wardrobe:
+	say "You meander through the racks of clothes. Finding nothing of interest, you return to where you first entered the wardrobe."
+	
 
 Section 2 - The Diving Suit
 
-The rubber suit is a wearable thing in the Wardrobe. "Standing in one corner is an oversized rubber suit, complete with metal helmet." The description of the rubber suit is "A bulky, seamless suit of rubber topped with a bulbous, metal helmet. The helmet has several, round viewports for visibility in its front and sides, and a [if the rubber suit is connected to the hose]large valve connected to a rubber hose[otherwise]open, threaded valve[end if] on its back." Understand "rubber", "metal", "helmet", "viewports", "valve", "open valve" as the rubber suit.
+The rubber suit is a wearable thing in the Wardrobe. "Hanging near the south exit is an oversized rubber suit, complete with metal helmet." The description of the rubber suit is "A bulky, seamless suit of rubber topped with a bulbous, metal helmet. The helmet has several, round viewports for visibility in its front and sides, and a [if the rubber suit is connected to the hose]large valve connected to a rubber hose[otherwise]open, threaded valve[end if] on its back." Understand "rubber", "metal", "helmet", "viewports", "valve", "open valve" as the rubber suit.
 		
 Carry out going a compass direction (called the way) when the rubber suit is worn:
 	say "[one of]Wearing the ungainly suit[or]Sweating profusely from the heat of the suit[purely at random], you stiffly stump off to [the way].[line break]";
@@ -493,6 +517,8 @@ The Octagonal Chamber is northeast of the Dome. "A large chamber, the gray stone
 
 The gray stone walls are scenery in the Octagonal Chamber. "Constructed from slick, gray stone, each wall is set in one of the compass directions, and all extend upward, out of sight. Runes inscribe the walls." Understand "wall" as gray stone walls.
 
+Does the player mean examining the gray stone walls: it is very likely.
+
 The runes are scenery in the Octagonal Chamber. "Symbols that you cannot comprehend."
 
 Section 2 - The Orbs
@@ -515,7 +541,7 @@ the Orb of Magma	magma
 
 Section 3 - The Octagon and Its Stands
 
-The octagon is scenery in the Octagonal Chamber. "Carved into the stone floor of the chamber, each line of the octagon runs underneath a small stand, paralleling a wall of the room[print up octagon]."
+The octagon is scenery in the Octagonal Chamber. "Carved into the stone floor of the chamber and drawn parallel to the walls, each line of the octagon runs underneath a small stand[print up octagon]."
 
 To say print up octagon:
 	let occupied ways be a list of directions; 
@@ -656,6 +682,23 @@ The surreal landscape is scenery.
 Instead of examining the surreal landscape:
 	say "Through the doorframe you see [reveal of the room south of the Foyer]." Understand "plane", "planescape" as the surreal landscape.
 	
+Understand "stalagmites", "stalactites", "cavern", "veins", "ore", "jewels" as the surreal landscape when the plane of existence is earth.
+
+Understand "water", "ocean", "sea", "realm", "underwater realm" as the surreal landscape when the plane of existence is water.
+
+Understand "sky", "air" as the surreal landscape when the plane of existence is air.
+
+Understand "flames", "fire", "inferno" as the surreal landscape when the plane of existence is fire.
+
+Understand "ooze", "viscous slime", "rivers", "muck", "mud", "slime" as the surreal landscape when the plane of existence is ooze.
+
+Understand "icicles", "cavern", "ice" as the surreal landscape when the plane of existence is ice.
+
+Understand "clouds", "smoke" as the surreal landscape when the plane of existence is smoke.
+
+Understand "magma", "molten rock", "rock", "lava", "plain" as the surreal landscape when the plane of existence is magma.
+
+
 Instead of going north when the location is a plane:
 	try entering the intimidating oak doors;
 	
@@ -675,7 +718,7 @@ The Plane of Earth is a plane. "An enormous cavern of stalactites and stalagmite
 
 The Orb of Earth is in the Plane of Earth. The initial appearance of the Orb of Earth is "Sitting atop a broken stalagmite is a crystal orb."
 
-The Plane of Water is a plane. "You swim through a sea of crystal, blue-green water with no bottom or surface to be seen." The reveal is "an underwater realm shimmering with a crystal, blue-green light". The doors description is "Floating serenely and not far from you are the familiar oak doors". Understand "sea", "ocean", "water" as the background when the location is the Plane of Water.
+The Plane of Water is a plane. "You swim through a sea of crystalline blue-green water with no bottom or surface to be seen." The reveal is "an underwater realm shimmering with a crystalline blue-green light". The doors description is "Floating serenely and not far from you are the familiar oak doors". Understand "sea", "ocean", "water" as the background when the location is the Plane of Water.
 
 The Orb of Water is in the Plane of Water. The initial appearance of the Orb of Water is "Floating before you like a lone bubble is a crystal orb."
 
@@ -701,7 +744,6 @@ The Plane of Magma is a plane. "Molten rock slithers, bubbles, and bursts around
 
 The Orb of Magma is in the Plane of Magma. The initial appearance of the Orb of Magma is "Half-buried in a small crater of liquid rock lies a crystal orb."
 
-
 Table of the Planes
 element	room	
 earth	Plane of Earth
@@ -716,17 +758,17 @@ magma	Plane of Magma
 Section 4 - Opening and Closing Canisters
 
 Instead of opening an element-less canister:
-	say "You flip open the empty canister by pulling back the lid with a finger. Nothing happens, so you close the canister back up.";
+	say "You flip open the lid with your thumb. Nothing happens, so you close the canister back up.";
 	
 Instead of opening an imbued canister:
-	say "You flip open the canister by pulling back the lid with a finger. The ethereal essence within seeps out of the canister and disappears.";
+	say "You flip open the lid with your thumb. The ethereal essence within seeps out of the canister and disappears.";
 	now the element of the noun is element-less;
 	
 Instead of opening an element-less canister when the location is a Plane:
 	enchant the noun;
 	
 To enchant (the holder - a canister):
-	say "You flip open the empty canister by pulling back the lid with a finger. The canister begins to glow and vibrate, as an essence of [plane of existence] from your surroundings streams into the canister. The canister hums for a momemt, then goes silent.";
+	say "You flip open the lid with your thumb. The canister begins to glow and vibrate, as an essence of [plane of existence] from your surroundings streams into the canister. The canister hums for a moment, then goes silent.";
 	now the element of the holder is the plane of existence;
 	
 
@@ -735,7 +777,7 @@ Part 4 - The Plot
 Chapter 1 -  Starting the Game
 
 When  play begins:
-	say "This place is bigger than you thought..."
+	say "The door leading back to Sigil closes behind you with a thunderous boom that you thought incapable within this small, dilapidated shack. But what you entered doesn't seem to be a small, dilapidated shack at all..."
 	
 Part 5 - Help
 
@@ -758,8 +800,10 @@ To debug (msg - some text):
 	if debugging is true:
 		say "[msg][line break]";		
 
+[
 When play begins:
 	now debugging is true;
+]
 
 Chapter 3 - Special Commands - Not for release
 
@@ -788,7 +832,7 @@ Test place-orbs with "put orb of earth on north stand / x octagon / put orb of o
 [
 
 NEXT STEP
- * Clean up hose text
+ X Clean up hose text
  * Start making clues and plots
 
 TODO's
@@ -801,14 +845,23 @@ TODO's
   X Trying to close doors when in a plane because it would cut off hose.
   X Detaching the hose - verb
   X Detaching the hose when in a plane - that's a bad idea
-  * Dome scenery - understand different words depending on the plane
-  * Foyer scenery - understand different words as describing the plane
-  * Different warnings for the plane of existence when leaving the door
-  * Octagon description right up front?
+  X Dome scenery - understand different words depending on the plane
+  X Foyer scenery - understand different words as describing the plane
+  X Going a direction in the wardrobe.
+  ? Different warnings for the plane of existence when leaving the doors?
+  ? Visit some planes without gear?
+  ? Octagon description right up front?
 
 
 BUGS
-* >attach hose to wall
+X >attach hose to wall
 You can't see any such thing
+
+X >x dome
+Which do you mean, Background or Outside the dome?
+
+X >x walls
+Which do you mean, Background or the gray stone walls?
+
 
 ]
