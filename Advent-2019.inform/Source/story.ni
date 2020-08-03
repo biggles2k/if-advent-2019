@@ -777,7 +777,7 @@ Part 4 - The Plot
 Chapter 1 -  Starting the Game
 
 When  play begins:
-	say "The door leading back to Sigil closes behind you with a thunderous boom that you thought incapable within this small, dilapidated shack. But what you entered doesn't seem to be a small, dilapidated shack at all..."
+	say "The door leading back to Sigil closes behind you with a thunderous boom that you thought impossible within this small, dilapidated shack. But what you entered doesn't seem to be a small, dilapidated shack at all..."
 	
 Part 5 - Help
 
