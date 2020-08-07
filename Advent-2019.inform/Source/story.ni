@@ -26,7 +26,7 @@ Chapter 2 - New Stuff
 
 Section 1 - Elemental Containers
 
-An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as an element-less elemental container. Understand "essence" as an imbued elemental container.
+An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as an element-less elemental container. Understand "essence", "essence of" as an imbued elemental container.
 
 Definition: An elemental container is imbued if it is not element-less.
 
@@ -246,6 +246,10 @@ The  hatch is down from the Dome and up from the Mechanical Room. The hatch is a
 Report opening the hatch when the location is the Dome:
 	say "The hatch creaks open, revealing a way down." instead.
 	
+Section 4 - The Manual
+
+The manual is in the Dome. "Propped against the pedestal is a manual." The description of the manual is "Entitled 'Manual of the Planes,' it's a thick tome describing the four elemental planes of earth, water, air, and fire, and how they intersect to form the four paraelemental planes of ooze, ice, smoke, and magma."
+	
 Chapter 4 - The Mechanical Room
 
 Section 1 - The Room Itself
@@ -259,8 +263,6 @@ The machinery is scenery in the Mechanical Room. "A noisy, oversized, mechanical
 Instead of listening when the location is the Mechanical Room:
 	say  "The mechanical cacophony is deafening."
 	
-Four element-less canisters are in the Mechanical Room.
-
 Section 2 - The Column and Its Slots
 
 The column is scenery in the Mechanical Room. "The column stretches from floor to ceiling and has eight sides to it, each facing a different compass direction. A narrow slot, about a forearm in height, has been chiseled into each side of the column."
@@ -321,9 +323,12 @@ Section 1 - The Lab Itself
 
 The Laboratory is northwest of the Dome. "A webwork of glassware, tubes, burners, wires, benches, monitors and other equipment encompasses this immense laboratory. It's difficult to move without disturbing or even breaking something, and occasionally you need to duck under a stray wire or tube. An exit from this delicate web of instrumentation is to the southeast." Understand "laboratory" or "lab" as the background when the location is the Laboratory.
 
-The laboratory equipment is scenery in the Laboratory. "A cornucopia of laboratory equipment seemingly jumbled together at random, but it must make sense to somebody... maybe." Understand "glassware", "tubes", "burners", "wires", "benches", "bench", "monitors" as the laboratory equipment.
+The laboratory equipment is scenery in the Laboratory. "A cornucopia of laboratory equipment randomly jumbled together, but it must make sense to somebody... maybe." Understand "glassware", "tubes", "burners", "wires", "benches", "bench", "monitors" as the laboratory equipment.
 
-Two element-less canisters are in the Laboratory.
+Three element-less canisters are in the Laboratory.
+
+The lab notebook is in the Laboratory. "Discarded on the floor is a lab notebook." The description of the lab notebook is "You flip through the lab notebook, revealing mostly indecipherable diagrams and scribbles. One page stands out, though, with the words 'ACQUISITION OF ELEMENTAL ESSENCE' boldly written at the top. Beneath is a diagram of an empty canister and below that is scrawled, 'open in elemental or paraelemental plane.'";
+ 
 
 Section 2 - The Odd Contraption
 
@@ -383,7 +388,7 @@ The elemental reactions is a list of list of elements that varies. The elemental
 		d. empty the canister in the right slot
 ]
 Instead of pushing the shiny button when the odd contraption is activated and the left slot contains a canister (called c1) and the right slot contains a canister (called c2) and the middle slot contains a canister (called c3):
-	say "Upon depressing the button, the odd contraption hums and vibrates. A hissing noise sounds as each of the canisters is sealed into place. The tubes leading from the left and right canisters jerk compulsively as [element of c1] and [element of c2] flow through them toward the middle one";
+	say "Upon depressing the button, the odd contraption hums and vibrates. A hissing noise sounds as each of the canisters is sealed into place. The tubes leading from the left and right canisters jerk compulsively as [element of c1] and [element of c2] flow through them";
 	let first element num be the num for the element of c1;
 	let second element num be the num for element of c2;
 	debug "[line  break]>> Reacting [element of c1] ([first element num]) with [element of c2] ([second element num]).";
@@ -421,7 +426,7 @@ The racks of clothes are scenery in the Wardrobe. "A seemingly endless supply of
 Instead of going up when the location is the Wardrobe:
 	say "You can't go that way."
 
-Instead of going up when the location is the Wardrobe:
+Instead of going down when the location is the Wardrobe:
 	try going up;
 	
 Instead of going nowhere when the location is the Wardrobe:
@@ -607,6 +612,12 @@ Instead of taking an orb that is in a stand (called the holder):
 	otherwise:
 		say "You take [the noun] from [the holder].";
 	move the noun to the player;
+	
+Section 5 - The Disc
+
+The stone disc is in the Octagonal Chamber. "Lying in the center of the octagon is small disc." The description of the stone disc is "A thin, stone disc about the size of your palm. There's a small, soft depression in the center that you might be able to press." Understand "depression" as the stone disc.
+
+
 
 
 Chapter 8 - The Elemental and Paraelemental Planes of Existence
@@ -834,6 +845,7 @@ Test place-orbs with "put orb of earth on north stand / x octagon / put orb of o
 NEXT STEP
  X Clean up hose text
  * Start making clues and plots
+ * The stone disc
 
 TODO's
 
