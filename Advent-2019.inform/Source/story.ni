@@ -615,10 +615,34 @@ Instead of taking an orb that is in a stand (called the holder):
 	
 Section 5 - The Disc
 
-The stone disc is in the Octagonal Chamber. "Lying in the center of the octagon is small disc." The description of the stone disc is "A thin, stone disc about the size of your palm. There's a small, soft depression in the center that you might be able to press." Understand "depression" as the stone disc.
+The stone disc is in the Octagonal Chamber. "Lying in the center of the octagon is small disc." The description of the stone disc is "A thin, stone disc about the size of your palm. There's a small, soft depression in the center that you might be able to press." The stone disc has a number called the counter. The counter is 1. The stone disc can be activated or deactivated. The stone disc is deactivated. Understand "depression" as the stone disc.
 
+Instead of pushing the deactivated disc for the first time:
+	say "The disc is activated for the first time.";
+	now the disc is activated;
+	
+Instead of pushing the deactivated disc:
+	say "The disc is activated.";
+	now the disc is activated;
+	
+Instead of pushing the activated disc:
+	say "The disc is now deactivated.";
+	now the disc is deactivated;
 
-
+Every turn when the disc is activated:
+	if the location of the player is the location of the disc:
+		say the recording corresponding to a record of the counter of the disc in the Table of Recordings;
+		say line break;
+	now counter of the disc is the counter of the disc + 1;
+	if there is a record of the counter of the disc in the Table of Recordings:
+		do nothing;
+	otherwise:
+		now the counter of the disc is 1;
+		
+Table of Recordings
+record	recording
+1	"Hello!"
+2	"World!"
 
 Chapter 8 - The Elemental and Paraelemental Planes of Existence
 
@@ -842,10 +866,12 @@ Test place-orbs with "put orb of earth on north stand / x octagon / put orb of o
 
 [
 
-NEXT STEP
- X Clean up hose text
- * Start making clues and plots
- * The stone disc
+NEXT STEPS
+ * Draft of the stone disc
+ * Recordings of stone disc
+ * The traveler appears
+ * The traveler activates lever in the pedestal
+ * Final exit to Sigil
 
 TODO's
 
