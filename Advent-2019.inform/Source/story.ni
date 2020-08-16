@@ -615,18 +615,18 @@ Instead of taking an orb that is in a stand (called the holder):
 	
 Section 5 - The Disc
 
-The stone disc is in the Octagonal Chamber. "Lying in the center of the octagon is small disc." The description of the stone disc is "A thin, stone disc about the size of your palm. There's a small, soft depression in the center that you might be able to press." The stone disc has a number called the counter. The counter is 1. The stone disc can be activated or deactivated. The stone disc is deactivated. Understand "depression" as the stone disc.
+The stone disc is in the Octagonal Chamber. "Lying in the center of the octagon is small disc." The description of the stone disc is "A thin, stone disc about the size of your palm. There's a small, soft depression in the center that you might be able to press[if the disc is activated]. The disc is glowing, and standing in its center is an apparition of sorts[end if]." The stone disc has a number called the counter. The counter is 1. The stone disc can be activated or deactivated. The stone disc is deactivated. Understand "depression" as the stone disc. Understand "woman", "apparition" as the stone disc when the stone disc is activated.
 
 Instead of pushing the deactivated disc for the first time:
-	say "The disc is activated for the first time.";
+	say "When you press the depression, the disc emits an unsteady cone of blue light. A humanoid apparition forms, standing in the center of the disc. The apparition wavers and ripples, making it difficult to discern who (or what) it might be, but a woman's voice, sounding distant and hollow, speaks.";
 	now the disc is activated;
 	
 Instead of pushing the deactivated disc:
-	say "The disc is activated.";
+	say "The apparition appears..";
 	now the disc is activated;
 	
 Instead of pushing the activated disc:
-	say "The disc is now deactivated.";
+	say "The apparition disappears and the disc ceases to glow.";
 	now the disc is deactivated;
 
 Every turn when the disc is activated:
@@ -641,8 +641,11 @@ Every turn when the disc is activated:
 		
 Table of Recordings
 record	recording
-1	"Hello!"
-2	"World!"
+1	"'Good,' says the voice. 'If you've found this recording, then I was able to slip it through the interdimensional matrix.'"
+2	"The voice of the apparition continues: 'They imprisoned me. Fortunately, I knew they were coming, so I created a key of sorts, a way to escape. I just need you to find it.'"
+3	"The voice of the apparition continues: 'I divided it into eight orbs, each with its own elemental or paraelemental essence. Arrange the orbs correctly in octagonal chamber in my ship, and I should be freed.'"
+4	"The voice of the apparition continues: 'The orbs are scattered throughout the inner planes, but I locked the coordinates of each one into the ship's navigational console. Press a button, and the ship will take you to the location of the orb.'"
+5	"The voice of the apparition continues: 'I hope to see you soon. When I get back, we can return to Sigil together!' The voice dissipates for a bit, then begins to repeat itself..."
 
 Chapter 8 - The Elemental and Paraelemental Planes of Existence
 
