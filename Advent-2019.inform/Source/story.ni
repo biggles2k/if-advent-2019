@@ -26,7 +26,7 @@ Chapter 2 - New Stuff
 
 Section 1 - Elemental Containers
 
-An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as an element-less elemental container. Understand "essence", "essence of" as an imbued elemental container.
+An elemental container is a kind of thing. An elemental container has an element. The element of an elemental container is usually element-less. Understand the element property as describing an elemental container. Understand "empty" as an element-less elemental container. Understand "essence", "essence of", "holding an essence of", "with an essence of" as an imbued elemental container.
 
 Definition: An elemental container is imbued if it is not element-less.
 
@@ -34,7 +34,7 @@ Before printing the name of a element-less elemental container:
 	say "empty ";
 
 After printing the name of an imbued elemental container:
-	say " with an essence of [element]".
+	say " holding an essence of [element]".
 
 Before printing the plural name of a element-less elemental container:
 	say "empty ";
@@ -91,7 +91,7 @@ Chapter 2 - The Foyer
 
 Section 1 - The Foyer Itself
 
-The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of intimidating oak doors[first time] (didn't you enter a single door?)[only] is to the south. Next to the doors is a hole." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
+The Foyer is a room. "A vaulted hallway of great antiquity leads north into a domed chamber. A pair of intimidating oak doors[first time] (didn't you enter through a single door?)[only] is to the south. Next to the doors is a hole." Understand "hallway", "vaulted hallway" as the background when the location is the Foyer.
 
 The vaulted ceiling is scenery in the Foyer. "The ceiling rests far above you, the frescoes nestled between its vaulted ribs dimly lit by. . . you do not know. They are simply. . . dimly lit."
 
@@ -151,7 +151,7 @@ Chapter 3 - The Dome
 
 Section 1 - Inside the Dome
 
-The Dome is north of the Foyer. "You stand in an immense chamber, its ceiling a massive dome of fluted glass. South lies the foyer while hallways lead off in the northerly directions. In the center of the chamber stands a pedestal, and at the southern base of the pedestal, sunk into the perforated steel floor, is a hatch.[paragraph break]Through the dome you see [through the dome]." Understand "dome" as the background when the location is the Dome.
+The Dome is north of the Foyer. "You stand in an immense chamber, its ceiling a massive dome of fluted glass. South lies the foyer while hallways lead off in the northerly directions. In the center of the chamber stands a pedestal. Next to its southern side, sunk into the perforated steel floor, is a hatch.[paragraph break]Through the dome you see [through the dome]." Understand "dome" as the background when the location is the Dome.
 
 Outside the dome is scenery in the Dome. The description of outside the dome is "Through the dome you see [through the dome]."
 
@@ -265,7 +265,7 @@ Instead of listening when the location is the Mechanical Room:
 	
 Section 2 - The Column and Its Slots
 
-The column is scenery in the Mechanical Room. "The column stretches from floor to ceiling and has eight sides to it, each facing a different compass direction. A narrow slot, about a forearm in height, has been chiseled into each side of the column."
+The column is scenery in the Mechanical Room. "The column stretches from floor to ceiling and has eight sides to it, each facing a different compass direction. A slot, about a forearm in height and thickness, has been carved into each side of the column."
 
 Report examining the column:
 	let niche-directions be a list of directions;
@@ -641,7 +641,7 @@ Every turn when the disc is activated:
 		
 Table of Recordings
 record	recording
-1	"'Good,' says the voice. 'If you've found this recording, then I was able to slip it through the interdimensional matrix.'"
+1	"'Good,' says the voice. 'If you've found this recording, then I was able to slip it through the transplanar matrix.'"
 2	"The voice of the apparition continues: 'They imprisoned me. Fortunately, I knew they were coming, so I created a key of sorts, a way to escape. I just need you to find it.'"
 3	"The voice of the apparition continues: 'I divided it into eight orbs, each with its own elemental or paraelemental essence. Arrange the orbs correctly in octagonal chamber in my ship, and I should be freed.'"
 4	"The voice of the apparition continues: 'The orbs are scattered throughout the inner planes, but I locked the coordinates of each one into the ship's navigational console. Press a button, and the ship will take you to the location of the orb.'"
@@ -675,7 +675,7 @@ Carry out opening the intimidating oak doors when the location is the foyer:
 	move the surreal landscape to the foyer;
 	
 Report opening the intimidating oak doors when the location is the foyer:
-	say "You open the doors[first time] and halt in your tracks, stunned at what you see because you're clearly not in Sigil anymore[only]. Beyond the doorframe is a surreal landscape: ";
+	say "You open the doors[first time], expecting to see the streets of Sigil, but are stunned at what is actually there[only]. Beyond the doorframe is a surreal landscape: ";
 	choose the row with the element of the plane of existence in the Table of the Planes;
 	say reveal of the room entry;
 	say  ".[paragraph break]What keeps the planescape beyond the doorframe... you don't know. There must be a barrier of some sort protecting you from the outside.";
@@ -815,7 +815,7 @@ Part 4 - The Plot
 Chapter 1 -  Starting the Game
 
 When  play begins:
-	say "The door leading back to Sigil closes behind you with a thunderous boom that you thought impossible within this small, dilapidated shack. But what you entered doesn't seem to be a small, dilapidated shack at all..."
+	say "The door leading back to Sigil closes behind you with a thunderous boom that you thought impossible within a small, dilapidated shack. But what you entered doesn't seem to be a small, dilapidated shack at all..."
 	
 Part 5 - Help
 
