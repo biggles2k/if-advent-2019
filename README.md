@@ -1,2 +1,2 @@
 # if-advent-2019
-Story file and other materials for my entry in the might-never-be IF Advent Calendar for 2019 (which probably won't happen until 2020).
+Story file and other materials for my entry in the might-never-be IF Advent Calendar for 2019 (which probably won't happen until 2020 (2022: okay, it's NEVER going to happen)).
